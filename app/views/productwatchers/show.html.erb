@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @productwatcher %>
+
+<div>
+  <%= link_to "Edit this productwatcher", edit_productwatcher_path(@productwatcher) %> |
+  <%= link_to "Back to productwatchers", productwatchers_path %>
+
+  <%= button_to "Destroy this productwatcher", @productwatcher, method: :delete %>
+</div>
