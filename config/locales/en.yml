@@ -99,8 +99,22 @@ en:
       index: "Productwatchers"      
       new: "New productwatcher" 
       edit: "Editing productwatcher"  
-      
-      
+  purchaseorder:
+      action:
+        new: "New purchaseorder"
+        show: "Show this purchaseorder"
+        edit: "Edit this purchaseorder"
+        destroy: "Destroy this purchaseorder"
+        back: "Back to purchaseorders"
+        save: "Save" 
+      lable:
+        status: "Status"
+      placeholder:
+        status: "Status"
+      heading:
+        index: "Purchaseorders"
+        new: "New purchaseorder"
+        edit: "Editing purchaseorder"
 
 
 

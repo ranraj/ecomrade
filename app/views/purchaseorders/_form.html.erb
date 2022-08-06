@@ -12,11 +12,11 @@
   <% end %>
 
   <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
+    <%= form.label t("purchaseorder.lable.status"), style: "display: block" %>
+    <%= form.text_field :status, placeholder: t("purchaseorder.lable.status") %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit t("purchaseorder.action.save"), class: 'btn btn-primary' %>
   </div>
 <% end %>
