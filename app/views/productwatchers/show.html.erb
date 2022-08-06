@@ -3,8 +3,8 @@
 <%= render @productwatcher %>
 
 <div>
-  <%= link_to "Edit this productwatcher", edit_productwatcher_path(@productwatcher) %> |
-  <%= link_to "Back to productwatchers", productwatchers_path %>
-
-  <%= button_to "Destroy this productwatcher", @productwatcher, method: :delete %>
+  <%= link_to t("productwatcher.action.edit"), edit_productwatcher_path(@productwatcher) %> |
+  <%= link_to t("productwatcher.action.back"), productwatchers_path %>
+  <br/>
+  <%= button_to t("productwatcher.action.destroy"), @productwatcher, method: :delete %>
 </div>

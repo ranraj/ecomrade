@@ -12,7 +12,7 @@ class CompaniesController < ApplicationController
 
   # GET /companies/new
   def new
-    @company = current_user.companies.build
+    @company = Company.new
   end
 
   # GET /companies/1/edit
@@ -20,8 +20,7 @@ class CompaniesController < ApplicationController
 
   # POST /companies or /companies.json
   def create
-    @company = current_user.companies.build
-
+    @company = Company.new(company_params)
     respond_to do |format|
       if @company.save
         format.html { redirect_to company_url(@company), notice: 'Company was successfully created.' }
@@ -58,9 +57,11 @@ class CompaniesController < ApplicationController
 
   private
 
-  def correct_user
-    @company = current_user.company.find_by(id: params[:id])
-    redirect_to companies_url, notice: 'Not authorized'
+  # Identify owner and throw una
+  def correct_user    
+    if !current_user.company.find_by(id: params[:id])
+        redirect_to(companies_url, notice: "Not autherized")
+    end    
   end
 
   # Use callbacks to share common setup or constraints between actions.

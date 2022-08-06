@@ -3,8 +3,8 @@
 <%= render @company %>
 
 <div>
-  <%= link_to "Edit this company", edit_company_path(@company) %> |
-  <%= link_to "Back to companies", companies_path %>
+  <%= link_to t("company.action.edit"), edit_company_path(@company) %> |
+  <%= link_to t("company.action.back"), companies_path %>
 
-  <%= button_to "Destroy this company", @company, method: :delete %>
+  <%= button_to t("company.action.destroy"), @company, method: :delete, class: 'btn btn-danger' %>
 </div>

@@ -1,0 +1,29 @@
+<%= form_with(model: productwatcher) do |form| %>
+  <% if productwatcher.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(productwatcher.errors.count, "error") %> prohibited this productwatcher from being saved:</h2>
+
+      <ul>
+        <% productwatcher.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>    
+    <%= form.text_field t("productwatcher.field.status") , type: :hidden%>
+  </div>
+  <div>
+    <%= form.number_field t("productwatcher.field.user"), id: :productwatcher_user_id, value: current_user.id , type: :hidden%>
+  </div>
+  <div>    
+    <%= form.number_field t("productwatcher.field.product"), id: :productwatcher_product_id, value: locals[:product_id] , type: :hidden%>
+  </div> 
+
+  <div>
+    <%= form.submit t("productwatcher.action.add_watcher"), class: "btn btn-info" %>
+  </div>
+<% end %>
+
+<%= button_to t("productwatcher.action.remove_watcher"), @productwatcher, method: :delete , class: 'btn btn-danger'%>

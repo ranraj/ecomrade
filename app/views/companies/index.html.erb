@@ -1,14 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Companies</h1>
+<h1><%=t("company.heading.index")%></h1>
 
 <div id="companies">
   <% @companies.each do |company| %>
     <%= render company %>
     <p>
-      <%= link_to "Show this company", company %>
+      <%= link_to t("company.action.show"), company %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New company", new_company_path %>
+<%= link_to t("company.action.new"), new_company_path %>

@@ -12,31 +12,31 @@
   <% end %>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.label t("product.lable.name"), style: "display: block" %>
+    <%= form.text_field :name, placeholder: t("product.placeholder.name")  %>
   </div>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+    <%= form.label t("product.lable.description"), style: "display: block" %>
+    <%= form.text_field :description, placeholder: t("product.placeholder.description") %>
   </div>
 
   <div>
-    <%= form.label :code, style: "display: block" %>
-    <%= form.text_field :code %>
+    <%= form.label t("product.lable.code"), style: "display: block" %>
+    <%= form.text_field :code , placeholder: t("product.placeholder.code")%>
   </div>
 
   <div>
-    <%= form.label :price, style: "display: block" %>
-    <%= form.number_field :price %>
+    <%= form.label t("product.lable.price"), style: "display: block" %>
+    <%= form.number_field :price , placeholder: t("product.placeholder.price")%>
   </div>
 
   <div>
-    <%= form.label :image_link, style: "display: block" %>
-    <%= form.text_field :image_link %>
+    <%= form.label t("product.lable.image_link"), style: "display: block" %>
+    <%= form.text_field :image_link, placeholder: t("product.placeholder.image_link") %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit t("product.action.save"),  class: 'btn btn-primary'%>
   </div>
 <% end %>

@@ -29,5 +29,78 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
-en:
-  hello: "Hello world"
+en:  
+  company:
+    action:
+      new: "New company"
+      show: "Show this company"
+      edit: "Edit this company"
+      destroy: "Destroy this company"
+      back: "Back to companies"
+      save: "Save"            
+    lable:
+      name: "Name"
+      description: "Description"
+      code: "Code"      
+      logo_link: "Logo link"
+      user: "User"
+    placeholder:
+      name: "Rose Industries"
+      description: "Production company"
+      code: "AAQW"      
+      logo_link: company_log.jpg"
+    heading: 
+      index: "Companies"      
+      new: "New company" 
+      edit: "Editing company"
+  product:
+    action:
+      new: "New product"
+      show: "Show this product"
+      edit: "Edit this product"
+      destroy: "Destroy this product"
+      back: "Back to products"
+      save: "Save"            
+    lable:
+      name: "Name"
+      description: "Description"
+      code: "Code"
+      price: "Price"
+      image_link: "Image link"
+    placeholder:
+      name: "Apple"
+      description: "Apple fruit 1 kg"
+      code: "APPL"
+      price: "150"
+      image_link: "apple.jpg"
+    heading: 
+      index: "Producta"      
+      new: "New product" 
+      edit: "Editing product"
+  productwatcher:
+    action:
+      new: "New productwatcher"
+      show: "Show this productwatcher"
+      edit: "Edit this productwatcher"
+      destroy: "Destory Productwatcher"
+      back: "Back to productwatchers"
+      add: "Add Watcher"
+      add_watcher: "+ Add me as Watcher"
+      remove_watcher: "- Remove me from Watcher"
+    lable:
+      status: "Status"
+      user: "User"
+      product: "Product"      
+    placeholder:
+      status: "Status"
+      user: "User"
+      product: "Product"
+    heading: 
+      index: "Productwatchers"      
+      new: "New productwatcher" 
+      edit: "Editing productwatcher"  
+      
+      
+
+
+

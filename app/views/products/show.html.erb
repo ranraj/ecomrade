@@ -1,10 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @product %>
-<%= render "productwatchers/form", productwatcher: @productwatcher, locals: {product_id: @product.id}%>
+<%= render "productwatchers/watch", productwatcher: @productwatcher, locals: {product_id: @product.id}%>
 
 <div>
-  <%= link_to "Edit this product", edit_product_path(@product) %> |
-  <%= link_to "Back to products", products_path %>  
-  <%= button_to "Destroy this product", @product, method: :delete , class: 'btn btn-danger'%>
+  <%= link_to t("product.action.edit"), edit_product_path(@product) %> |
+  <%= link_to t("product.action.back"), products_path %>  
+  <%= button_to t("product.action.destroy"), @product, method: :delete , class: 'btn btn-danger'%>
 </div>

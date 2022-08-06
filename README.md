@@ -30,3 +30,23 @@ Build :
 Dev :
 
 http://localhost:3000
+
+Start Delayed job :
+```
+./bin/delayed_job start
+./bin/delayed_job stop
+```
+
+SideKiq - makesure redis is running
+```
+docker run --name rdb -p 6379:6379 redis
+```
+Redis browser
+```
+npm install redis-commander
+redis-commander
+```
+Start the sidekqi
+```
+bundle exec sidekiq
+```

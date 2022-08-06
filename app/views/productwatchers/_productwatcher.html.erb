@@ -1,7 +1,15 @@
 <div id="<%= dom_id productwatcher %>">
   <p>
-    <strong>Status:</strong>
+    <strong><%=t("productwatcher.lable.status")%> :</strong>
     <%= productwatcher.status %>
+  </p>
+    <p>
+    <strong><%=t("productwatcher.lable.user")%>:</strong>
+    <%= productwatcher.user_id %>
+  </p>
+  <p>
+    <strong><%=t("productwatcher.lable.product")%> :</strong>
+    <%= productwatcher.product_id %>
   </p>
 
 </div>

@@ -12,16 +12,19 @@
   <% end %>
 
   <div>    
-    <%= form.text_field :status , type: :hidden%>
+    <%= form.label t("productwatcher.lable.status"), style: "display: block" %>
+    <%= form.text_field :status,placeholder: t("productwatcher.placeholder.status"), class:"form-group"%>
   </div>
   <div>
-    <%= form.number_field :user_id, id: :productwatcher_user_id, value: current_user.id , type: :hidden%>
+    <%= form.label t("productwatcher.lable.user"), style: "display: block" %>
+    <%= form.number_field :user_id, id: :productwatcher_user_id, value: current_user.id,placeholder: t("productwatcher.placeholder.user"), class:"form-group"%>
   </div>
   <div>    
-    <%= form.number_field :product_id, id: :productwatcher_product_id, value: locals[:product_id] , type: :hidden%>
+    <%= form.label t("productwatcher.lable.product"), style: "display: block" %>
+    <%= form.number_field :product_id, id: :productwatcher_product_id , placeholder: t("productwatcher.placeholder.product"), class:"form-group"%>
   </div> 
-
   <div>
-    <%= form.submit "+ Add me as Watcher", class: "btn btn-info" %>
+    <%= form.submit t("productwatcher.action.add"), class: "btn btn-success"%>
   </div>
 <% end %>
+

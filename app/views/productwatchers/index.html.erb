@@ -1,14 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Productwatchers</h1>
+<h1><%= t("productwatcher.heading.index")%></h1>
 
 <div id="productwatchers">
   <% @productwatchers.each do |productwatcher| %>
     <%= render productwatcher %>
     <p>
-      <%= link_to "Show this productwatcher", productwatcher %>
+      <%= link_to t("productwatcher.action.show"), productwatcher %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New productwatcher", new_productwatcher_path %>
+<%= link_to t("productwatcher.action.new"), new_productwatcher_path %>
