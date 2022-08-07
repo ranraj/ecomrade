@@ -3,7 +3,7 @@ class PurchaseordersController < ApplicationController
 
   # GET /purchaseorders or /purchaseorders.json
   def index
-    @purchaseorders = Purchaseorder.all
+    @purchaseorders = Purchaseorder.page(params[:page])
   end
 
   # GET /purchaseorders/1 or /purchaseorders/1.json

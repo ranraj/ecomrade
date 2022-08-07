@@ -2,7 +2,9 @@
 
 class Product < ApplicationRecord
   has_many :productwatcher
-
+  paginates_per 10
+  max_paginates_per 100
+  
   def notify
     log "#{productwatcher_ids} notification triggered"
   end

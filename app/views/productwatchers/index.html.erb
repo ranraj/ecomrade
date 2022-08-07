@@ -2,6 +2,7 @@
 
 <h1><%= t("productwatcher.heading.index")%></h1>
 
+<%= link_to t("productwatcher.action.new"), new_productwatcher_path %>
 <div id="productwatchers">
   <% @productwatchers.each do |productwatcher| %>
     <%= render productwatcher %>
@@ -10,5 +11,4 @@
     </p>
   <% end %>
 </div>
-
-<%= link_to t("productwatcher.action.new"), new_productwatcher_path %>
+<%= paginate @productwatchers %>

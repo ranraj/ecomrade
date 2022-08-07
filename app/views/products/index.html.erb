@@ -1,5 +1,6 @@
 <h1>Products</h1>
 
+<%= link_to "New product", new_product_path %>
 <div id="products">
   <% @products.each do |product| %>
     <%= render product %>
@@ -9,4 +10,5 @@
   <% end %>
 </div>
 
-<%= link_to "New product", new_product_path %>
+
+<%= paginate @products%>

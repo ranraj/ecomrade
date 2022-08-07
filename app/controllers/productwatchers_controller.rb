@@ -3,7 +3,7 @@ class ProductwatchersController < ApplicationController
 
   # GET /productwatchers or /productwatchers.json
   def index
-    @productwatchers = Productwatcher.all
+    @productwatchers = current_user.productwatcher.page(params[:page])
   end
 
   # GET /productwatchers/1 or /productwatchers/1.json

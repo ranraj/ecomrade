@@ -4,7 +4,7 @@ class CompaniesController < ApplicationController
   before_action :correct_user, only: %i[edit update destroy]
   # GET /companies or /companies.json
   def index
-    @companies = current_user.company
+    @companies = current_user.company.page(params[:page])
   end
 
   # GET /companies/1 or /companies/1.json
