@@ -6,6 +6,9 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
+    puts "****"
+    puts Rails.application.config.mail
+    puts "****"
     @products = Product.page(params[:page])
   end
 

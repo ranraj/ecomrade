@@ -1,0 +1,5 @@
+development:  
+    server: "smtp.gmail.com"
+    user_name: "", # Gmail username with domain
+    password: "" # Get 2 factor gmail authentication password
+production:

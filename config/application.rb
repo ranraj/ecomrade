@@ -23,6 +23,9 @@ module Ecom
     
     # Adding correlation id for log
     config.log_tags = [ :request_id ]
-   # config.mailconfig = config_for(:mail_config)    
+   
+   # Caching mailer
+   config.action_mailer.perform_caching = true
+   config.mail = config_for(:mail)
   end
 end
