@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :productwatchers
   resources :purchaseorders
   require 'sidekiq/web'
-  mount Sidekiq::Web => "/sidekiq"
+  mount Sidekiq::Web => '/sidekiq'
   resources :companies
   resources :products
   devise_for :users

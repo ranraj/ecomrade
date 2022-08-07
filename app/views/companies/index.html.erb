@@ -1,14 +1,29 @@
-<p style="color: green"><%= notice %></p>
-
 <h1><%=t("company.heading.index")%></h1>
 
-<div id="companies">
-  <% @companies.each do |company| %>
-    <%= render company %>
-    <p>
-      <%= link_to t("company.action.show"), company %>
-    </p>
-  <% end %>
-</div>
-
 <%= link_to t("company.action.new"), new_company_path %>
+<table class="table table-striped" id="companies">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col"><%=t("company.lable.name")%></th> 
+      <th scope="col"><%=t("company.lable.description")%></th> 
+      <th scope="col"><%=t("company.lable.code")%></th>       
+      <th scope="col"><%=t("company.lable.logo_link")%></th>            
+    </tr>
+  </thead>
+  <tbody>
+    <%if @companies%>
+      <% @companies.each do |company| %>
+        <%= render 'company_tbl', company: company %>      
+      <% end %>
+    <%else%>
+        <tr class="no-data">
+          <td colspan="14">
+           <%= t("application.common.lable.no_records_found")%> 
+           <%=t("application.common.lable.create_first")%> 
+           <%= link_to t("company.lable.company"), new_company_path %>
+           </td>
+        </tr>
+    <%end%>
+  </tbody>
+</table>

@@ -1,14 +1,22 @@
-<p style="color: green"><%= notice %></p>
-
 <h1><%= t("purchaseorder.heading.index")%></h1>
 
-<div id="purchaseorders">
-  <% @purchaseorders.each do |purchaseorder| %>
-    <%= render purchaseorder %>
-    <p>
-      <%= link_to t("purchaseorder.action.show"), purchaseorder %>
-    </p>
-  <% end %>
+<div >
+ 
 </div>
 
 <%= link_to  t("purchaseorder.action.new"), new_purchaseorder_path %>
+
+<table class="table table-striped" id="purchaseorders">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col"><%=t("purchaseorder.lable.status")%></th>            
+    </tr>
+  </thead>
+  <tbody>
+    <% @purchaseorders.each do |purchaseorder| %>
+      <%= render 'purchaseorder_tbl', purchaseorder: purchaseorder %>      
+    <% end %>
+  </tbody>
+</table>
+

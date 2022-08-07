@@ -29,7 +29,16 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
-en:  
+en:
+  application:
+    common:
+      lable:
+        create_first: "Create your first"  
+        no_records_found: "No matching records found !"
+      message:
+        not_authorized: "Not authorized for this request"  
+      exception:
+        internal_server: "We are having internal system failure."  
   company:
     action:
       new: "New company"
@@ -39,6 +48,7 @@ en:
       back: "Back to companies"
       save: "Save"            
     lable:
+      company: "Company"
       name: "Name"
       description: "Description"
       code: "Code"      
@@ -53,6 +63,13 @@ en:
       index: "Companies"      
       new: "New company" 
       edit: "Editing company"
+    message:
+      create:
+        success: "Company was successfully created."
+      update:
+        success: "Company was successfully updated."
+      destroy:
+        success: "Company was successfully destroyed."        
   product:
     action:
       new: "New product"
@@ -77,6 +94,13 @@ en:
       index: "Producta"      
       new: "New product" 
       edit: "Editing product"
+    message:
+      create:
+        success: "Product was successfully created."
+      update:
+        success: "Product was successfully updated."
+      destroy:
+        success: "Product was successfully destroyed."        
   productwatcher:
     action:
       new: "New productwatcher"
@@ -99,6 +123,13 @@ en:
       index: "Productwatchers"      
       new: "New productwatcher" 
       edit: "Editing productwatcher"  
+    message:
+      create:
+        success: "Productwatcher was successfully created."
+      update:
+        success: "Productwatcher was successfully updated."
+      destroy:
+        success: "Productwatcher was successfully destroyed."   
   purchaseorder:
       action:
         new: "New purchaseorder"
@@ -106,7 +137,7 @@ en:
         edit: "Edit this purchaseorder"
         destroy: "Destroy this purchaseorder"
         back: "Back to purchaseorders"
-        save: "Save" 
+        save: "Save"         
       lable:
         status: "Status"
       placeholder:
@@ -115,6 +146,13 @@ en:
         index: "Purchaseorders"
         new: "New purchaseorder"
         edit: "Editing purchaseorder"
+      message:
+        create:
+          success: "Purchaseorder was successfully created."
+        update:
+          success: "Purchaseorder was successfully updated."
+        destroy:
+          success: "Purchaseorder was successfully destroyed." 
 
 
 

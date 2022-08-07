@@ -1,1 +1,1 @@
-json.array! @productwatchers, partial: "productwatchers/productwatcher", as: :productwatcher
+json.array! @productwatchers, partial: 'productwatchers/productwatcher', as: :productwatcher

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'active_support/core_ext/integer/time'
+require_relative '../../app/logger/log_formatter'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -71,4 +72,29 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # log level  
+  config.log_level = :debug
+
+  # Logs configuration
+  config.lograge.formatter = Lograge::Formatters::Json.new
+  
+  config.lograge.enabled = true
+  config.lograge.base_controller_class = ['ActionController::Base']
+  config.lograge.custom_options = lambda do |event|
+     {
+       request_time: Time.now,
+       application: Rails.application.class.module_parent_name,
+       process_id: Process.pid,
+       host: event.payload[:host],
+       remote_ip: event.payload[:remote_ip],
+       ip: event.payload[:ip],
+       x_forwarded_for: event.payload[:x_forwarded_for],
+       #params: event.payload[:params].except(*exceptions).to_json,
+       rails_env: Rails.env,
+       exception: event.payload[:exception]&.first,
+       request_id: event.payload[:headers]['action_dispatch.request_id'],
+     }.compact
+
+   end
 end

@@ -1,5 +1,5 @@
 class PurchaseordersController < ApplicationController
-  before_action :set_purchaseorder, only: %i[ show edit update destroy ]
+  before_action :set_purchaseorder, only: %i[show edit update destroy]
 
   # GET /purchaseorders or /purchaseorders.json
   def index
@@ -7,8 +7,7 @@ class PurchaseordersController < ApplicationController
   end
 
   # GET /purchaseorders/1 or /purchaseorders/1.json
-  def show
-  end
+  def show; end
 
   # GET /purchaseorders/new
   def new
@@ -16,8 +15,7 @@ class PurchaseordersController < ApplicationController
   end
 
   # GET /purchaseorders/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /purchaseorders or /purchaseorders.json
   def create
@@ -25,22 +23,33 @@ class PurchaseordersController < ApplicationController
 
     respond_to do |format|
       if @purchaseorder.save
-        format.html { redirect_to purchaseorder_url(@purchaseorder), notice: "Purchaseorder was successfully created." }
-        format.json { render :show, status: :created, location: @purchaseorder }
+        begin
+          # Sidekiq async
+          BaseWorkerJob.perform_async
+          format.html do
+            redirect_to purchaseorder_url(@purchaseorder), notice: I18n.t('purchaseorder.message.create.success')
+          end
+          format.json { render :show, status: :created, location: @purchaseorder }
+        rescue Exception
+          format.html do
+            redirect_to purchaseorder_url(@purchaseorder),
+                        flash: { error: I18n.t('application.common.exception.internal_server') }
+          end
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @purchaseorder.errors, status: :unprocessable_entity }
       end
-    end 
-    #    Verification.check(@purchaseorder)
-    BaseWorkerJob.perform_async('4-8-2022','5-8-2022')
+    end
   end
 
   # PATCH/PUT /purchaseorders/1 or /purchaseorders/1.json
   def update
     respond_to do |format|
       if @purchaseorder.update(purchaseorder_params)
-        format.html { redirect_to purchaseorder_url(@purchaseorder), notice: "Purchaseorder was successfully updated." }
+        format.html do
+          redirect_to purchaseorder_url(@purchaseorder), notice: I18n.t('purchaseorder.message.update.success')
+        end
         format.json { render :show, status: :ok, location: @purchaseorder }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,19 +63,20 @@ class PurchaseordersController < ApplicationController
     @purchaseorder.destroy
 
     respond_to do |format|
-      format.html { redirect_to purchaseorders_url, notice: "Purchaseorder was successfully destroyed." }
+      format.html { redirect_to purchaseorders_url, notice: I18n.t('purchaseorder.message.destroy.success') }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_purchaseorder
-      @purchaseorder = Purchaseorder.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def purchaseorder_params
-      params.require(:purchaseorder).permit(:status)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_purchaseorder
+    @purchaseorder = Purchaseorder.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def purchaseorder_params
+    params.require(:purchaseorder).permit(:status)
+  end
 end

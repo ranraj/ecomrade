@@ -20,5 +20,8 @@ module Ecom
     # config.eager_load_paths << Rails.root.join("extras")
     # delayed_job
     config.active_job.queue_adapter = :delayed_job
+    
+    # Adding correlation id for log
+    config.log_tags = [ :request_id ]    
   end
 end

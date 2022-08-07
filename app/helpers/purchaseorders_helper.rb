@@ -1,2 +1,2 @@
-module PurchaseordersHelper  
+module PurchaseordersHelper
 end

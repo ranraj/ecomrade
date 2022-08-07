@@ -23,6 +23,10 @@ Things you may want to cover:
 
 * ...
 
+Contribute :
+
+Use ```rubocop -a``` before commit.
+
 Build :
 - bundle install
 - rails s

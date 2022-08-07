@@ -1,1 +1,1 @@
-json.array! @purchaseorders, partial: "purchaseorders/purchaseorder", as: :purchaseorder
+json.array! @purchaseorders, partial: 'purchaseorders/purchaseorder', as: :purchaseorder

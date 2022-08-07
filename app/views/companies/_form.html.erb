@@ -32,8 +32,8 @@
   </div>
 
   <div>
-    <%= form.label t("company.lable.user"), style: "display: block" %>
-    <%= form.number_field :user_id, id: :company_user_id, value: current_user.id %>
+    <%= form.label t("company.lable.user"), style: "display: block",type: :hidden %>
+    <%= form.number_field :user_id, id: :company_user_id, value: current_user.id, type: :hidden %>
   </div>
 
   <div>

@@ -1,1 +1,1 @@
-json.partial! "productwatchers/productwatcher", productwatcher: @productwatcher
+json.partial! 'productwatchers/productwatcher', productwatcher: @productwatcher
