@@ -1,8 +1,9 @@
 class BaseWorkerJob
   include Sidekiq::Job
   sidekiq_options retry: false
+  logger = Rails.logger
 
   def perform
-    puts 'Order provision worker started.'
+    logger.info 'Order provision worker started.'
   end
 end

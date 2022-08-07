@@ -140,6 +140,7 @@ en:
         save: "Save"         
       lable:
         status: "Status"
+        order_email_subject:  "You got a new order!"
       placeholder:
         status: "Status"
       heading:

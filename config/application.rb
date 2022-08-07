@@ -22,6 +22,7 @@ module Ecom
     config.active_job.queue_adapter = :delayed_job
     
     # Adding correlation id for log
-    config.log_tags = [ :request_id ]    
+    config.log_tags = [ :request_id ]
+   # config.mailconfig = config_for(:mail_config)    
   end
 end

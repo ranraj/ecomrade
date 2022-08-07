@@ -96,4 +96,23 @@ Rails.application.configure do
      }.compact
 
    end
+
+  # Email server configuration
+  config.action_mailer.delivery_method = :smtp  
+  #host = 'example.com' #replace with your own url
+  #config.action_mailer.default_url_options = { host: host }
+
+  #config.action_mailer.delivery_method = :test
+  host = 'localhost:3000'
+  config.action_mailer.default_url_options = { :host => 'localhost:3000', protocol: 'http' } 
+  
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => "xxxxx",
+    :password             => "yyyyy",
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
 end

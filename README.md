@@ -33,8 +33,13 @@ Build :
 
 Dev :
 
+```
 http://localhost:3000
-
+```
+Sidekiq
+```
+http://localhost:3000/sidekiq
+```
 Start Delayed job :
 ```
 ./bin/delayed_job start
@@ -44,6 +49,10 @@ Start Delayed job :
 SideKiq - makesure redis is running
 ```
 docker run --name rdb -p 6379:6379 redis
+```
+Rerun stoped container
+```
+docker start  rdb
 ```
 Redis browser
 ```

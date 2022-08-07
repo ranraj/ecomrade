@@ -1,5 +1,6 @@
 class PurchaseordersController < ApplicationController
   before_action :set_purchaseorder, only: %i[show edit update destroy]
+  logger = Rails.logger
 
   # GET /purchaseorders or /purchaseorders.json
   def index
@@ -26,11 +27,15 @@ class PurchaseordersController < ApplicationController
         begin
           # Sidekiq async
           BaseWorkerJob.perform_async
+          #OrderMailer.with(purchaseorder: @purchaseorder,user: current_user).new_order_email.deliver_later
+          OrderMailer.with(purchaseorder: @purchaseorder,user: current_user).new_order_email.deliver_now!
           format.html do
             redirect_to purchaseorder_url(@purchaseorder), notice: I18n.t('purchaseorder.message.create.success')
           end
           format.json { render :show, status: :created, location: @purchaseorder }
-        rescue Exception
+        rescue Exception => ex
+          logger.error e.message
+          logger.error e.backtrace.join("\n")
           format.html do
             redirect_to purchaseorder_url(@purchaseorder),
                         flash: { error: I18n.t('application.common.exception.internal_server') }
