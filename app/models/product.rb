@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 class Product < ApplicationRecord
-  include ElasticsearchIndexer
+   
+  include ProductSearch
 
-  searchkick callbacks: false # ? what is this
+  after_commit :reindex_model
 
   has_many :productwatcher
   paginates_per 10
-  max_paginates_per 100
+  max_paginates_per 100        
 
   def notify
     log "#{productwatcher_ids} notification triggered"
@@ -18,11 +19,9 @@ class Product < ApplicationRecord
     Delayed::Worker.logger.add(Logger::INFO, text)
   end
 
-  def search_data
-    {
-      name:,
-      description:,
-      productwatcher: productwatcher.count
-    }
+  def reindex_model        
+    if (previous_changes.keys & search_data.stringify_keys.keys).present?
+      ElasticWorker.perform_async(self.id,self.class.name)
+    end
   end
 end

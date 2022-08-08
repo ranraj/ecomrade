@@ -1,5 +1,11 @@
 <h1>Products</h1>
 
+<%= form_with url: products_path, method: :get do |form| %>
+  <%= form.label :query, "Search for:"%>
+  <%= form.text_field :query %>
+  <%= form.submit "Search" %>
+<% end %>
+
 <%= link_to "New product", new_product_path %>
 <div id="products">
   <% @products.each do |product| %>

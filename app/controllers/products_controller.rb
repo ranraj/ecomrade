@@ -6,14 +6,18 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index    
-    @products = Product.page(params[:page])
+    @products = if search_string
+      Product.search_for(search_string, page: params[:page], per_page: 25)
+    else
+      Product.order(updated_at: :desc).page(params[:page])      
+    end
   end
 
   # GET /products/1 or /products/1.json
   def show
     @productwatcher = Productwatcher.new
   end
-
+   
   # GET /products/new
   def new
     @product = Product.new
@@ -71,5 +75,9 @@ class ProductsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def product_params
     params.require(:product).permit(:name, :description, :code, :price, :image_link)
+  end
+
+  helper_method def search_string
+    params[:query].presence
   end
 end
