@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PurchaseordersController < ApplicationController
   before_action :set_purchaseorder, only: %i[show edit update destroy]
   logger = Rails.logger
@@ -26,14 +28,14 @@ class PurchaseordersController < ApplicationController
       if @purchaseorder.save
         begin
           # Sidekiq async
-          BaseWorkerJob.perform_async
-          #OrderMailer.with(purchaseorder: @purchaseorder,user: current_user).new_order_email.deliver_later
-          OrderMailer.with(purchaseorder: @purchaseorder,user: current_user).new_order_email.deliver_now!
+          OrderProvisionWorker.perform_async(@purchaseorder)
+          # OrderMailer.with(purchaseorder: @purchaseorder,user: current_user).new_order_email.deliver_later
+          OrderMailer.with(purchaseorder: @purchaseorder, user: current_user).new_order_email.deliver_now!
           format.html do
             redirect_to purchaseorder_url(@purchaseorder), notice: I18n.t('purchaseorder.message.create.success')
           end
           format.json { render :show, status: :created, location: @purchaseorder }
-        rescue Exception => ex
+        rescue Exception => e
           logger.error e.message
           logger.error e.backtrace.join("\n")
           format.html do

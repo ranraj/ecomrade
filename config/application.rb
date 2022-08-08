@@ -20,12 +20,12 @@ module Ecom
     # config.eager_load_paths << Rails.root.join("extras")
     # delayed_job
     config.active_job.queue_adapter = :delayed_job
-    
+
     # Adding correlation id for log
-    config.log_tags = [ :request_id ]
-   
-   # Caching mailer
-   config.action_mailer.perform_caching = true
-   config.mail = config_for(:mail)
+    config.log_tags = [:request_id]
+
+    # Caching mailer
+    config.action_mailer.perform_caching = true
+    config.mail = config_for(:mail)
   end
 end

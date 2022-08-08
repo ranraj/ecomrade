@@ -5,10 +5,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!
 
   # GET /products or /products.json
-  def index
-    puts "****"
-    puts Rails.application.config.mail
-    puts "****"
+  def index    
     @products = Product.page(params[:page])
   end
 

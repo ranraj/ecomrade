@@ -27,24 +27,10 @@ Contribute :
 
 Use ```rubocop -a``` before commit.
 
-Build :
-- bundle install
-- rails s
 
-Dev :
 
-```
-http://localhost:3000
-```
-Sidekiq
-```
-http://localhost:3000/sidekiq
-```
-Start Delayed job :
-```
-./bin/delayed_job start
-./bin/delayed_job stop
-```
+
+# Dependency systems
 
 SideKiq - makesure redis is running
 ```
@@ -59,12 +45,34 @@ Redis browser
 npm install redis-commander
 redis-commander
 ```
+```
 Start the sidekqi
 ```
 bundle exec sidekiq
+```
+Sidekiq
+```
+http://localhost:3000/sidekiq
+```
+Start Delayed job :
+```
+./bin/delayed_job start
+./bin/delayed_job stop
 ```
 
 elastic search
 ```
 docker-compose -f elastic_kibana_compose.yml up
+```
+
+Build :
+```
+- bundle install
+- rails s
+```
+
+Dev :
+
+```
+http://localhost:3000
 ```

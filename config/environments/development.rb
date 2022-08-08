@@ -72,47 +72,46 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  # log level  
+  # log level
   config.log_level = :debug
 
   # Logs configuration
   config.lograge.formatter = Lograge::Formatters::Json.new
-  
+
   config.lograge.enabled = true
   config.lograge.base_controller_class = ['ActionController::Base']
   config.lograge.custom_options = lambda do |event|
-     {
-       request_time: Time.now,
-       application: Rails.application.class.module_parent_name,
-       process_id: Process.pid,
-       host: event.payload[:host],
-       remote_ip: event.payload[:remote_ip],
-       ip: event.payload[:ip],
-       x_forwarded_for: event.payload[:x_forwarded_for],
-       #params: event.payload[:params].except(*exceptions).to_json,
-       rails_env: Rails.env,
-       exception: event.payload[:exception]&.first,
-       request_id: event.payload[:headers]['action_dispatch.request_id'],
-     }.compact
-
-   end
+    {
+      request_time: Time.now,
+      application: Rails.application.class.module_parent_name,
+      process_id: Process.pid,
+      host: event.payload[:host],
+      remote_ip: event.payload[:remote_ip],
+      ip: event.payload[:ip],
+      x_forwarded_for: event.payload[:x_forwarded_for],
+      # params: event.payload[:params].except(*exceptions).to_json,
+      rails_env: Rails.env,
+      exception: event.payload[:exception]&.first,
+      request_id: event.payload[:headers]['action_dispatch.request_id']
+    }.compact
+  end
 
   # Email server configuration
-  config.action_mailer.delivery_method = :smtp  
-  #host = 'example.com' #replace with your own url
-  #config.action_mailer.default_url_options = { host: host }
+  config.action_mailer.delivery_method = :smtp
+  # host = 'example.com' #replace with your own url
+  # config.action_mailer.default_url_options = { host: host }
 
-  #config.action_mailer.delivery_method = :test
+  # config.action_mailer.delivery_method = :test
   host = 'localhost:3000'
-  config.action_mailer.default_url_options = { :host => 'localhost:3000', protocol: 'http' } 
-  
+  config.action_mailer.default_url_options = { host: 'localhost:3000', protocol: 'http' }
+
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
-    :address              => Rails.application.config.mail.server,
-    :port                 => 587,
-    :user_name            => Rails.application.config.mail.user_name
-    :password             => Rails.application.config.mail.password,
-    :authentication       => "plain",
-    :enable_starttls_auto => true
+    address: Rails.application.config.mail.server,
+    port: 587,
+    user_name: Rails.application.config.mail.user_name,
+    password: Rails.application.config.mail.password,
+    authentication: 'plain',
+    enable_starttls_auto: true
   }
 end

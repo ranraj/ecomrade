@@ -2,7 +2,7 @@ version: "2.0"
 services:
   elasticsearch:
     platform: linux/x86_64
-    image: elasticsearch:7.6.2
+    image: elasticsearch::7.17.1
     environment:
       - bootstrap.memory_lock=true
       - bootstrap.system_call_filter=false

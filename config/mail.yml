@@ -1,7 +1,7 @@
 development:  
     server: "smtp.gmail.com"
-    user_name: ""
-    password: ""
+    user_name: "ranjithraj.d@gmail.com"
+    password: "gcjrushaelwjnfjy"
 production:    
     server: ""
     user_name: ""

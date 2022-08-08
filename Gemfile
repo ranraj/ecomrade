@@ -53,9 +53,9 @@ gem 'daemons'
 gem 'delayed_job_active_record'
 
 # Sidekiq
-gem 'sidekiq'
+gem 'sidekiq', '~> 6.0.2'
 
-#Authentication
+# Authentication
 gem 'devise', '~> 4.8', '>= 4.8.1'
 
 # Pagination
@@ -65,14 +65,13 @@ gem 'kaminari', '~> 1.2', '>= 1.2.2'
 gem 'rubocop', '~> 1.32', require: false
 gem 'sassc-rails'
 
-
-#Logger
+# Logger
 gem 'lograge', '~> 0.11.2'
 
 # Elastic search
-gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
-gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
-gem 'rack-cors', :require => 'rack/cors'
+gem 'elasticsearch', '< 7.14'
+gem 'rack'
+gem 'searchkick'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
