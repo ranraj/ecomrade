@@ -63,3 +63,8 @@ Start the sidekqi
 ```
 bundle exec sidekiq
 ```
+
+elastic search
+```
+docker-compose -f elastic_kibana_compose.yml up
+```

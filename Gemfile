@@ -45,16 +45,34 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'bootsnap', require: false
 
 gem 'bootstrap', '~> 4.2.1'
+gem 'jquery-rails'
+gem 'popper_js', '~> 1.14.3'
+
+# shopify delayed job
 gem 'daemons'
 gem 'delayed_job_active_record'
+
+# Sidekiq
+gem 'sidekiq'
+
+#Authentication
 gem 'devise', '~> 4.8', '>= 4.8.1'
-gem 'jquery-rails'
+
+# Pagination
 gem 'kaminari', '~> 1.2', '>= 1.2.2'
-gem 'popper_js', '~> 1.14.3'
+
+# static code analyser
 gem 'rubocop', '~> 1.32', require: false
 gem 'sassc-rails'
-gem 'sidekiq'
+
+
+#Logger
 gem 'lograge', '~> 0.11.2'
+
+# Elastic search
+gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+gem 'rack-cors', :require => 'rack/cors'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
