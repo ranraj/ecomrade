@@ -68,7 +68,6 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
-    ast (2.4.2)
     autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
     bcrypt (3.1.18)
@@ -117,7 +116,7 @@ GEM
     elasticsearch-transport (7.13.3)
       faraday (~> 1)
       multi_json
-    erubi (1.10.0)
+    erubi (1.11.0)
     execjs (2.8.1)
     faraday (1.10.1)
       faraday-em_http (~> 1.0)
@@ -161,7 +160,6 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    json (2.6.2)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.2)
@@ -207,12 +205,10 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
-    nokogiri (1.13.8-arm64-darwin)
+    nokogiri (1.13.8-aarch64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    parallel (1.22.1)
-    parser (3.1.2.0)
-      ast (~> 2.4.1)
+    pg (1.4.2)
     popper_js (1.14.7)
     public_suffix (4.0.7)
     puma (5.6.4)
@@ -249,7 +245,6 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
       zeitwerk (~> 2.5)
-    rainbow (3.1.1)
     rake (13.0.6)
     redis (4.7.1)
     regexp_parser (2.5.0)
@@ -261,19 +256,6 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
-    rubocop (1.32.0)
-      json (~> 2.3)
-      parallel (~> 1.10)
-      parser (>= 3.1.0.0)
-      rainbow (>= 2.2.2, < 4.0)
-      regexp_parser (>= 1.8, < 3.0)
-      rexml (>= 3.2.5, < 4.0)
-      rubocop-ast (>= 1.19.1, < 2.0)
-      ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.19.1)
-      parser (>= 3.1.1.0)
-    ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     sassc (2.4.0)
@@ -287,7 +269,7 @@ GEM
     searchkick (5.0.4)
       activemodel (>= 5.2)
       hashie
-    selenium-webdriver (4.3.0)
+    selenium-webdriver (4.4.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -304,7 +286,6 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.4)
     stimulus-rails (1.1.0)
       railties (>= 6.0.0)
     strscan (3.0.4)
@@ -317,7 +298,6 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
-    unicode-display_width (2.2.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -338,7 +318,7 @@ GEM
     zeitwerk (2.6.0)
 
 PLATFORMS
-  arm64-darwin-21
+  aarch64-linux
 
 DEPENDENCIES
   bootsnap
@@ -354,17 +334,16 @@ DEPENDENCIES
   jquery-rails
   kaminari (~> 1.2, >= 1.2.2)
   lograge (~> 0.11.2)
+  pg (~> 1.0)
   popper_js (~> 1.14.3)
   puma (~> 5.0)
   rack
   rails (~> 7.0.3, >= 7.0.3.1)
-  rubocop (~> 1.32)
   sassc-rails
   searchkick
   selenium-webdriver
   sidekiq (~> 6.0.2)
   sprockets-rails
-  sqlite3 (~> 1.4)
   stimulus-rails
   turbo-rails
   tzinfo-data
@@ -375,4 +354,4 @@ RUBY VERSION
    ruby 3.1.2p20
 
 BUNDLED WITH
-   2.3.18
+   2.3.7

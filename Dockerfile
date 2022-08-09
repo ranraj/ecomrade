@@ -1,16 +1,9 @@
-FROM ghcr.io/ledermann/rails-base-builder:3.1.2-alpine as Builder
-
-
-FROM ghcr.io/ledermann/rails-base-final:3.1.2-alpine
-LABEL maintainer="georg@ledermann.dev"
-
-# Workaround for BuildKit to trigger Builder's ONBUILDs to finish
-COPY --from=Builder /etc/alpine-release /tmp/dummy
-
-# Add Alpine packages
-RUN apk add --no-cache imagemagick
-
-USER app
-
-# Start up
-CMD ["docker/startup.sh"]
+FROM ruby:3.1.2
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
+RUN mkdir /myapp
+WORKDIR /myapp
+ADD Gemfile /myapp/Gemfile
+#ADD Gemfile.lock /myapp/Gemfile.lock
+#RUN ["gem","install","bundler"]
+RUN bundle install
+ADD . /myapp

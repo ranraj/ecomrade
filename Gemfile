@@ -62,7 +62,6 @@ gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'kaminari', '~> 1.2', '>= 1.2.2'
 
 # static code analyser
-gem 'rubocop', '~> 1.32', require: false
 gem 'sassc-rails'
 
 # Logger

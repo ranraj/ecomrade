@@ -1,0 +1,91 @@
+version: '3.4'
+services:
+  web:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - ./:/myapp
+    ports:
+      - "3000:3000"
+    environment:
+      - ELASTICSEARCH_HOST=elasticsearch
+      - REDIS_SIDEKIQ_URL=redis://redis:6379/0
+      - REDIS_CABLE_URL=redis://redis:6379/1
+      - REDIS_CACHE_URL=redis://redis:6379/2
+      - SECRET_KEY_BASE=f0ee8496d1ddeb69fa0980d0580ff0f174262e61b53e8a318c990a193661f45f84b07a995d33ca8749eb6e0085d375201d319ed0fdaab9aa469e3b9b96f269d6
+      - DB_HOST=postgres
+      - DB_USER=ecomadmin
+      - DB_PASSWORD=ecomdev@123
+      - RAILS_MAX_THREADS
+      - APP_HOST
+      - APP_SSL
+      - FRONTEND_HOST
+      - APP_ADMIN_EMAIL=admin@example.org
+      - APP_ADMIN_PASSWORD=secret
+      - APP_EMAIL=reply@example.org
+      - PIWIK_HOST=piwik.example.org
+      - PIWIK_ID=42
+      - SMTP_SERVER
+      - SMTP_PORT
+      - SMTP_DOMAIN
+      - SMTP_USERNAME
+      - SMTP_PASSWORD
+      - SMTP_AUTHENTICATION
+      - SMTP_ENABLE_STARTTLS_AUTO
+      - AWS_ACCESS_KEY_ID=1234
+      - AWS_SECRET_ACCESS_KEY=1234abcdef
+      - AWS_BUCKET=mybucket
+      - AWS_REGION=eu-central-1
+      - BLAZER_DATABASE_URL
+    depends_on:
+      - postgres
+      - sidekiq
+    networks:
+      - docker_elk
+
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq
+    depends_on:
+      - redis
+    env_file:
+      - .env
+    volumes:
+      - skiq-data:/sidekiq
+    networks:
+      - docker_elk
+
+  postgres:
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/
+      - db-data:/var/lib/postgresql/data
+    extends:
+      file: docker/pg_compose.yml
+      service: postgres
+
+  kibana:
+    extends:
+      file: docker/kibana_compose.yml
+      service: kibana
+
+  elasticsearch:
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+    extends:
+      file: docker/elastic_compose.yml
+      service: elasticsearch
+
+  redis:
+    extends:
+      file: docker/redis_compose.yml
+      service: redis
+
+volumes:
+  db-data:
+  es-data:
+  skiq-data:
+
+
+networks:
+  docker_elk:
+    driver: bridge

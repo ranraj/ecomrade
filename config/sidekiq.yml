@@ -1,0 +1,4 @@
+:queues:
+  - [default, 1]
+  - [searchkick, 1]
+  - [mailers, 2]
