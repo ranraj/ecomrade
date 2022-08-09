@@ -1,13 +1,11 @@
 version: '3.4'
 services:
-  web:
-    build: .
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
-    volumes:
-      - ./:/myapp
-    ports:
-      - "3000:3000"
+  app:
+    &app_base
+    build:
+      context: .
     environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
       - ELASTICSEARCH_HOST=elasticsearch
       - REDIS_SIDEKIQ_URL=redis://redis:6379/0
       - REDIS_CABLE_URL=redis://redis:6379/1
@@ -38,7 +36,11 @@ services:
       - AWS_BUCKET=mybucket
       - AWS_REGION=eu-central-1
       - BLAZER_DATABASE_URL
-    depends_on:
+    ports:
+      - "3000:3000"
+    links:
+      - elasticsearch
+      - redis
       - postgres
       - sidekiq
     networks:

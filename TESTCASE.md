@@ -17,3 +17,8 @@ Steps :
     1- Make purchase order
     2- Receive email    
 
+4 # Start app firsttime and search for some product
+    1- start app with fresh database
+    2- Register user
+    3- Search for product
+Result : 

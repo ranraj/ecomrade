@@ -71,6 +71,7 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  #TODO 1: check for env variable 
 
   # log level
   config.log_level = :debug
