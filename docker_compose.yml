@@ -1,33 +1,46 @@
 version: '3.4'
 services:
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq
+    depends_on:
+      - redis
+    env_file:
+      - .env
+    volumes:
+      - skiq-data:/sidekiq
+    networks:
+      - docker_elk
+
   postgres:
     volumes:
-      - ./db:/docker-entrypoint-initdb.d/
+      - ./docker/db:/docker-entrypoint-initdb.d/
       - db-data:/var/lib/postgresql/data
     extends:
-      file: pg_compose.yml
+      file: docker/pg_compose.yml
       service: postgres
 
   kibana:
     extends:
-      file: kibana_compose.yml
+      file: docker/kibana_compose.yml
       service: kibana
 
   elasticsearch:
     volumes:
       - es-data:/usr/share/elasticsearch/data
     extends:
-      file: elastic_compose.yml
+      file: docker/elastic_compose.yml
       service: elasticsearch
 
   redis:
     extends:
-      file: redis_compose.yml
+      file: docker/redis_compose.yml
       service: redis
 
 volumes:
   db-data:
   es-data:
+  skiq-data:
 
 
 networks:

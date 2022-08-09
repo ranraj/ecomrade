@@ -38,8 +38,14 @@ Below docker compose would startup the dependency systems.
 - Redis
 - Elastic search
 Note : Please ensure that you have set the password (POSTGRES_PASSWORD) in the docker/pg_compose.yml
+
+Start the Ecom application with dependency system
 ```
-docker-compose -f docker/docker_compose.develop.yml up
+docker compose -f docker_compose.yml -f docker_compose.webapp.yml up
+```
+Boot only dependency systems through docker compose. This could be useful for development purpose. Start the puma server on you local system and connect dependency from docker.
+```
+docker-compose -f docker/docker_compose.yml up
 ```
 Start your rails server from the terminal. Use the docker postgres db password (password) in config/database.yml
 ```

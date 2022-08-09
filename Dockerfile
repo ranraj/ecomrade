@@ -7,3 +7,5 @@ ADD Gemfile /myapp/Gemfile
 #RUN ["gem","install","bundler"]
 RUN bundle install
 ADD . /myapp
+
+CMD ["docker/startup.sh"]

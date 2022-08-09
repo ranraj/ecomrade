@@ -13,9 +13,10 @@ services:
       - REDIS_CABLE_URL=redis://redis:6379/1
       - REDIS_CACHE_URL=redis://redis:6379/2
       - SECRET_KEY_BASE=f0ee8496d1ddeb69fa0980d0580ff0f174262e61b53e8a318c990a193661f45f84b07a995d33ca8749eb6e0085d375201d319ed0fdaab9aa469e3b9b96f269d6
-      - DB_HOST=postgres
-      - DB_USER=ecomadmin
-      - DB_PASSWORD=ecomdev@123
+      - ECOM_DATABASE_HOST=postgres
+      - ECOM_DATABASE_PORT=5432
+      - ECOM_DATABASE_USERNAME=ecomadmin
+      - ECOM_DATABASE_PASSWORD=ecomdev@123
       - RAILS_MAX_THREADS
       - APP_HOST
       - APP_SSL
@@ -42,50 +43,3 @@ services:
       - sidekiq
     networks:
       - docker_elk
-
-  sidekiq:
-    build: .
-    command: bundle exec sidekiq
-    depends_on:
-      - redis
-    env_file:
-      - .env
-    volumes:
-      - skiq-data:/sidekiq
-    networks:
-      - docker_elk
-
-  postgres:
-    volumes:
-      - ./db:/docker-entrypoint-initdb.d/
-      - db-data:/var/lib/postgresql/data
-    extends:
-      file: docker/pg_compose.yml
-      service: postgres
-
-  kibana:
-    extends:
-      file: docker/kibana_compose.yml
-      service: kibana
-
-  elasticsearch:
-    volumes:
-      - es-data:/usr/share/elasticsearch/data
-    extends:
-      file: docker/elastic_compose.yml
-      service: elasticsearch
-
-  redis:
-    extends:
-      file: docker/redis_compose.yml
-      service: redis
-
-volumes:
-  db-data:
-  es-data:
-  skiq-data:
-
-
-networks:
-  docker_elk:
-    driver: bridge
