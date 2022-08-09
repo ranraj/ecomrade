@@ -1,0 +1,35 @@
+version: '3.4'
+services:
+  postgres:
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/
+      - db-data:/var/lib/postgresql/data
+    extends:
+      file: pg_compose.yml
+      service: postgres
+
+  kibana:
+    extends:
+      file: kibana_compose.yml
+      service: kibana
+
+  elasticsearch:
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+    extends:
+      file: elastic_compose.yml
+      service: elasticsearch
+
+  redis:
+    extends:
+      file: redis_compose.yml
+      service: redis
+
+volumes:
+  db-data:
+  es-data:
+
+
+networks:
+  docker_elk:
+    driver: bridge

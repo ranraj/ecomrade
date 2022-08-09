@@ -12,4 +12,8 @@ Steps:
     2- Test the record is not available
 Result : Passed
     
+3 # Create purchase order should trigger email to admin?
+Steps :
+    1- Make purchase order
+    2- Receive email    
 
