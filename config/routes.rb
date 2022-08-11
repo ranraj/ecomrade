@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'cart/index'
+  get 'cart/edit'
+  get 'cart/show'
+  get 'cart/destroy'
+  get 'line_item/index'
+  get 'line_item/edit'
+  get 'line_item/show'
+  get 'line_item/destroy'
   resources :productwatchers
   resources :purchaseorders
   require 'sidekiq/web'
@@ -16,7 +24,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root to: 'home#index'
+  root to: 'products#index'
 
   namespace :api do
     namespace :v1 do

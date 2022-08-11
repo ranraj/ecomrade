@@ -35,6 +35,7 @@ en:
       lable:
         create_first: "Create your first"  
         no_records_found: "No matching records found !"
+        no_records_found_for: "Your search '%{search_key}' did not match any documents."
       message:
         not_authorized: "Not authorized for this request"  
       exception:
@@ -91,7 +92,7 @@ en:
       price: "150"
       image_link: "apple.jpg"
     heading: 
-      index: "Producta"      
+      index: "Products"      
       new: "New product" 
       edit: "Editing product"
     message:

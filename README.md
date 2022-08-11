@@ -103,3 +103,12 @@ Dev :
 ```
 http://localhost:3000
 ```
+
+Docker process
+```
+docker ps 
+```
+Docker logs follow
+```
+docker logs <DOCKER_CONTAINER_ID> --follow
+```

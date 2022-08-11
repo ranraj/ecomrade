@@ -72,6 +72,7 @@ gem 'elasticsearch', '< 7.14'
 gem 'rack'
 gem 'searchkick'
 
+gem "rspec" , '~> 3.0'
 # Use Sass to process CSS
 # gem "sassc-rails"
 

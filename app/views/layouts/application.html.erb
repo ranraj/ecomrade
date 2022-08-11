@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Ecom</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -12,11 +12,10 @@
 
   <body>
     <%= render 'home/header'%>
-        
-    <%= render 'layouts/alert'%>
-    
-    
-    <%= yield %>
+    <div class="container mt-2">    
+      <%= render 'layouts/alert'%>        
+      <%= yield %>
+    </div>
   </body>
 
 </html>

@@ -1,23 +1,24 @@
 # frozen_string_literal: true
 
-class ProductsController < ApplicationController
+class ProductsController < ApplicationController  
+
   before_action :set_product, only: %i[show edit update destroy]
   before_action :authenticate_user!
 
   # GET /products or /products.json
-  def index    
+  def index
     @products = if search_string
-      Product.search_for(search_string, page: params[:page], per_page: 25)
-    else
-      Product.order(updated_at: :desc).page(params[:page])      
-    end
+                  Product.search_for(search_string, page: params[:page], per_page: Product.per_page)                  
+                else
+                  Product.order(updated_at: :desc).page(params[:page])
+                end    
   end
 
   # GET /products/1 or /products/1.json
   def show
     @productwatcher = Productwatcher.new
   end
-   
+
   # GET /products/new
   def new
     @product = Product.new

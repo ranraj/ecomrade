@@ -1,20 +1,25 @@
-<h1>Products</h1>
-
-<%= form_with url: products_path, method: :get do |form| %>
-  <%= form.label :query, "Search for:"%>
-  <%= form.text_field :query %>
-  <%= form.submit "Search" %>
-<% end %>
-
-<%= link_to "New product", new_product_path %>
-<div id="products">
-  <% @products.each do |product| %>
-    <%= render product %>
-    <p>
-      <%= link_to "Show this product", product %>
-    </p>
-  <% end %>
+<div class="row mt-2 mb-2">
+   <div class="col-md-12">
+      <div class="card mb-12">
+         <div class="card-body">
+            <!-- Rails content -->        
+            <%= link_to "New product", new_product_path %>
+            <br/>
+            <% if @products.present? %>
+              <div class="container-fluid p-0 m-0 align-items-center justify-content-center d-flex"
+               style="min-height: 85vh;">
+                  <!-- Row for the card-->
+                  <div class="row w-100 p-0 w-0">                   
+                      <% @products.each do |product| %>
+                        <%= render "product_tile", product: product %>                                          
+                      <%end%>
+                  </div>
+              </div>
+              <%= paginate @products%>
+            <%else%>
+               <%= t("application.common.lable.no_records_found_for",search_key: search_string)%>
+            <%end%>                    
+         </div>
+      </div>
+   </div>   
 </div>
-
-
-<%= paginate @products%>

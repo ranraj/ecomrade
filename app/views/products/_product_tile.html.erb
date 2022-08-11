@@ -1,0 +1,26 @@
+<div class="col-lg-4 mb-2">
+    <div class="card mx-auto" style="width:18rem;">
+        <div class="text-center" >
+            <%if product.image_link.empty?%>
+                <img class="" src="<%= asset_url("img_not_found.png") %>"
+                    alt="No image found" width="100px" height="100px">
+            <%else%>
+                <img class="thumbnail_small" src="<%= product.image_link%>"
+                        alt="Card image cap"  width="100px" height="100px" >                
+            <%end%>
+        </div>        
+        <div class="card-body">
+            <h5 class="card-title">
+                <%= product.name %>
+            </h5>
+            <p class="card-text">
+                <%= product.description %>
+            </p>
+            <h6 class="card-subtitle text-muted mb-2"><%= t("product.lable.price")%> : <%= product.price %></h6>
+            <a href="#" class="btn btn-success">
+                Add to cart
+            </a>
+            <%= link_to "View", product, class:"card-link" %>
+        </div>
+    </div>               
+</div>
