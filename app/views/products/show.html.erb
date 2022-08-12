@@ -1,8 +1,13 @@
 <%= render @product %>
-<%= render "productwatchers/watch", productwatcher: @productwatcher, locals: {product_id: @product.id}%>
 
-<div>
-  <%= link_to t("product.action.edit"), edit_product_path(@product) %> |
+<% if user_signed_in?%>
+  <%= render "productwatchers/watch", productwatcher: @productwatcher, locals: {product_id: @product.id}%>
+<% end %>
+
+<div>    
   <%= link_to t("product.action.back"), products_path %>  
-  <%= button_to t("product.action.destroy"), @product, method: :delete , class: 'btn btn-danger'%>
+  <% if user_signed_in?%>
+    <%= link_to t("product.action.edit"), edit_product_path(@product) %> |
+    <%= button_to t("product.action.destroy"), @product, method: :delete , class: 'btn btn-danger'%>
+  <% end %>
 </div>
