@@ -3,6 +3,8 @@
 require 'test_helper'
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @product = products(:one)
   end
@@ -12,43 +14,15 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should get new' do
+  test 'should get new request redirect, if not signed in' do
+    get new_product_url
+    assert_response :redirect
+  end
+
+  test 'should get new ' do
+    sign_in users(:one)
     get new_product_url
     assert_response :success
   end
-
-  test 'should create product' do
-    assert_difference('Product.count') do
-      post products_url,
-           params: { product: { code: @product.code, description: @product.description, image_link: @product.image_link,
-                                name: @product.name, price: @product.price } }
-    end
-
-    assert_redirected_to product_url(Product.last)
-  end
-
-  test 'should show product' do
-    get product_url(@product)
-    assert_response :success
-  end
-
-  test 'should get edit' do
-    get edit_product_url(@product)
-    assert_response :success
-  end
-
-  test 'should update product' do
-    patch product_url(@product),
-          params: { product: { code: @product.code, description: @product.description, image_link: @product.image_link,
-                               name: @product.name, price: @product.price } }
-    assert_redirected_to product_url(@product)
-  end
-
-  test 'should destroy product' do
-    assert_difference('Product.count', -1) do
-      delete product_url(@product)
-    end
-
-    assert_redirected_to products_url
-  end
+  
 end
