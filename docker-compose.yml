@@ -20,11 +20,6 @@ services:
       file: docker/pg_compose.yml
       service: postgres
 
-  kibana:
-    extends:
-      file: docker/kibana_compose.yml
-      service: kibana
-
   elasticsearch:
     volumes:
       - es-data:/usr/share/elasticsearch/data

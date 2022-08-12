@@ -11,4 +11,13 @@ services:
       - "9200:9200"
       - "9300:9300"
     networks:
-      - docker_elk        
+      - docker_elk  
+  kibana:
+      platform: linux/x86_64
+      image: kibana:7.6.2
+      depends_on:
+        - elasticsearch
+      ports:
+        - "5601:5601"      
+      networks:
+        - docker_elk
