@@ -3,6 +3,7 @@
 require 'test_helper'
 
 class ProductwatchersControllerTest < ActionDispatch::IntegrationTest
+  before_action :authenticate_user!
   setup do
     @productwatcher = productwatchers(:one)
   end

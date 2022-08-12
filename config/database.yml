@@ -13,3 +13,9 @@ development:
   username: ecomadmin
   database: ecom_development
   password: ecomdev@123
+
+test:
+  <<: *default
+  username: ecomtestadmin
+  database: ecom_test
+  password: ecomtest@123

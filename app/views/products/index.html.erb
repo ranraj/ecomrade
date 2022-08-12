@@ -1,9 +1,11 @@
 <div class="row mt-2 mb-2">
    <div class="col-md-12">
-      <div class="card mb-12">
+      <div class="mb-12">
          <div class="card-body">
-            <!-- Rails content -->        
+            <!-- Rails content -->    
+            <% if user_signed_in? %>    
             <%= link_to "New product", new_product_path %>
+            <% end %>
             <br/>
             <% if @products.present? %>
               <div class="container-fluid p-0 m-0 align-items-center justify-content-center d-flex"
@@ -16,9 +18,15 @@
                   </div>
               </div>
               <%= paginate @products%>
-            <%else%>
+            <%elsif search_string == nil%>
+            <div class="m-3">   
+               <%= t("application.common.lable.no_records_found")%>
+            </div>   
+            <%else %>                    
+            <div class="m-3">
                <%= t("application.common.lable.no_records_found_for",search_key: search_string)%>
-            <%end%>                    
+            </div>
+            <%end%>
          </div>
       </div>
    </div>   
