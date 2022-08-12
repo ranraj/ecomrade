@@ -15,10 +15,10 @@
     <%= form.text_field t("productwatcher.field.status") , type: :hidden%>
   </div>
   <div>
-    <%= form.number_field t("productwatcher.field.user"), id: :productwatcher_user_id, value: current_user.id , type: :hidden%>
+    <%= form.number_field t("productwatcher.field.user"), id: :productwatcher_user_id, value: current_user.id %>
   </div>
   <div>    
-    <%= form.number_field t("productwatcher.field.product"), id: :productwatcher_product_id, value: locals[:product_id] , type: :hidden%>
+    <%= form.number_field t("productwatcher.field.product"), id: :productwatcher_product_id, value: locals[:product_id]%>
   </div> 
 
   <div>
