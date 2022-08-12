@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  description: MyString
-  code: MyString
-  logo: MyString
+  name: Doctor fixit
+  description: Construction mixer solution company
+  code: DCFT
+  logo: ""
 
 two:
-  name: MyString
-  description: MyString
-  code: MyString
-  logo: MyString
+  name: Apple Pie maker
+  description: Food product company
+  code: APM
+  logo: ""

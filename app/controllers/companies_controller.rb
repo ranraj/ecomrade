@@ -4,6 +4,7 @@ class CompaniesController < ApplicationController
   before_action :set_company, only: %i[show edit update destroy]
   before_action :authenticate_user!
   before_action :correct_user, only: %i[edit update destroy]
+
   # GET /companies or /companies.json
   def index
     @companies = current_user.company.page(params[:page])
@@ -35,12 +36,12 @@ class CompaniesController < ApplicationController
   end
 
   # PATCH/PUT /companies/1 or /companies/1.json
-  def update
+  def update    
     respond_to do |format|
       if @company.update(company_params)
         format.html { redirect_to company_url(@company), notice: I18n.t('company.message.update.success') }
         format.json { render :show, status: :ok, location: @company }
-      else
+      else        
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @company.errors, status: :unprocessable_entity }
       end
@@ -49,6 +50,7 @@ class CompaniesController < ApplicationController
 
   # DELETE /companies/1 or /companies/1.json
   def destroy
+    puts @company
     @company.destroy
 
     respond_to do |format|
