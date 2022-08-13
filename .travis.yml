@@ -19,7 +19,7 @@ before_script:
   - docker ps
 
 script:
-  - docker-compose exec app rails test
+  - docker-compose -f docker-compose.yml -f docker-compose-webapp.yml exec app rails test
 
 after_script:
-  - docker-compose down
+  - docker-compose -f docker-compose.yml -f docker-compose-webapp.yml down
