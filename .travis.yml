@@ -21,6 +21,7 @@ before_script:
 script:
   - docker-compose -f docker-compose.yml -f docker-compose-webapp.yml exec app rails db:environment:set RAILS_ENV=test
   - docker-compose -f docker-compose.yml -f docker-compose-webapp.yml exec app rails test
+  - docker-compose -f docker-compose.yml -f docker-compose-webapp.yml exec app rspec
 
 after_script:
   - docker-compose -f docker-compose.yml -f docker-compose-webapp.yml down
