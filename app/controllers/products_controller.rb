@@ -48,7 +48,7 @@ class ProductsController < ApplicationController
       if @product.update(product_params)
         format.html { redirect_to product_url(@product), notice: I18n.t('product.message.update.success') }
         format.json { render :show, status: :ok, location: @product }
-        @product.delay.notify
+        # @product.delay.notify
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @product.errors, status: :unprocessable_entity }
