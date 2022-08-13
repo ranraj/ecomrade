@@ -1,6 +1,7 @@
 require 'test_helper'
 class OrderProvisionWorkerTest < Minitest::Test
   def test_example
-    skip "add some examples to (or delete) #{__FILE__}"
+    # TODO
+    assert true
   end
 end

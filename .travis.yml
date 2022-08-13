@@ -19,6 +19,7 @@ before_script:
   - docker ps
 
 script:
+  - docker-compose -f docker-compose.yml -f docker-compose-webapp.yml exec app rails db:environment:set RAILS_ENV=test
   - docker-compose -f docker-compose.yml -f docker-compose-webapp.yml exec app rails test
 
 after_script:
