@@ -1,11 +1,18 @@
 require 'rails_helper'
 
-# RSpec.describe ProductsController, type: :controller do
-#   describe "GET /index" do
-#     # login_user
-#     it 'return response redirect if not signed in' do
-#       get :index
-#       expect(response).to be_success
-#     end  
-#   end
-# end
+RSpec.describe "Products", type: :request do
+  describe "GET /products" do
+    it 'return response success' do
+      get products_path
+      expect(response).to have_http_status(200)
+    end  
+  end
+
+  describe "POST /products" do
+    it 'return response redirect, if not signed in' do
+      post products_path
+      expect(response).to have_http_status(302)
+    end  
+  end
+
+end
