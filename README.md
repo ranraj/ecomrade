@@ -1,4 +1,7 @@
 # README
+## Ecomrade - Ecommerse application
+
+[![Build Status](https://app.travis-ci.com/ranraj/ecomrade.svg?branch=main)](https://app.travis-ci.com/github/ranraj/ecomrade)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
