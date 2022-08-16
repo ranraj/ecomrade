@@ -120,6 +120,10 @@ GEM
       multi_json
     erubi (1.11.0)
     execjs (2.8.1)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    faker (2.22.0)
+      i18n (>= 1.8.11, < 2)
     faraday (1.10.1)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
@@ -299,6 +303,8 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    shoulda-matchers (5.1.0)
+      activesupport (>= 5.2.0)
     sidekiq (6.0.7)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
@@ -361,6 +367,8 @@ DEPENDENCIES
   delayed_job_active_record
   devise (~> 4.8, >= 4.8.1)
   elasticsearch (< 7.14)
+  factory_bot
+  faker
   importmap-rails
   jbuilder
   jquery-rails
@@ -376,6 +384,7 @@ DEPENDENCIES
   sassc-rails
   searchkick
   selenium-webdriver
+  shoulda-matchers (~> 5.0)
   sidekiq (~> 6.0.2)
   simplecov
   sprockets-rails
