@@ -106,6 +106,7 @@ group :test do
 
   gem 'rspec', '~> 3.5'
   gem 'rspec-rails', '~> 4.1.0'
+  gem 'factory_bot_rails'
   gem 'simplecov', require: false
   gem 'factory_bot'
   gem 'shoulda-matchers', '~> 5.0'
