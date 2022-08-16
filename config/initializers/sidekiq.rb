@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sidekiq/api'
 
 redis_config = { url: ENV.fetch('REDIS_SIDEKIQ_URL', nil) }

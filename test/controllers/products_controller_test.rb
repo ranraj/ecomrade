@@ -26,9 +26,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create product redirect, if not signed in' do
-    
     post products_url,
-          params: { product: { code: @product.code, description: @product.description, image_link: @product.image_link,
+         params: { product: { code: @product.code, description: @product.description, image_link: @product.image_link,
                               name: @product.name, price: @product.price } }
 
     assert_response :redirect
@@ -56,7 +55,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should get edit redirects if not signed in' do    
+  test 'should get edit redirects if not signed in' do
     get edit_product_url(@product)
     assert_response :redirect
   end
@@ -73,7 +72,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     patch product_url(@product),
           params: { product: { code: @product.code, description: @product.description, image_link: @product.image_link,
                                name: @product.name, price: @product.price } }
-    assert_response :redirect 
+    assert_response :redirect
   end
 
   test 'should destroy product' do
@@ -86,8 +85,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should destroy product redirect if not signed in' do
-      delete product_url(@product)
-      assert_response :redirect 
+    delete product_url(@product)
+    assert_response :redirect
   end
-
 end

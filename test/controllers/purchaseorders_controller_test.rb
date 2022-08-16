@@ -67,7 +67,6 @@ class PurchaseordersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_user_session_url
   end
 
-
   test 'should update purchaseorder' do
     sign_in users(:one)
     patch purchaseorder_url(@purchaseorder), params: { purchaseorder: { status: @purchaseorder.status } }

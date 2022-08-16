@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'factory_bot'
 FactoryBot.define do
   factory :user do
-    name {"test"}
-    email {"test@user.com"}
-    password {"qwerty"}
+    name { 'test' }
+    email { 'test@user.com' }
+    password { 'qwerty' }
     # Add additional fields as required via your User model
   end
 

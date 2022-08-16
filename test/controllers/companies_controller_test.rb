@@ -45,7 +45,7 @@ class CompaniesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create company redirects, if not signed in' do
     post companies_url,
-          params: { company: { code: @company.code, description: @company.description, logo: @company.logo,
+         params: { company: { code: @company.code, description: @company.description, logo: @company.logo,
                               name: @company.name, user_id: @user.id } }
 
     assert_redirected_to new_user_session_url
@@ -87,7 +87,6 @@ class CompaniesControllerTest < ActionDispatch::IntegrationTest
                                name: @company.name, user_id: @user.id } }
     assert_redirected_to new_user_session_url
   end
-  
 
   # test 'should destroy company' do
   #   sign_in users(:one)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -8,24 +10,21 @@ RSpec.describe User, type: :model do
     end
 
     it 'ensure password presence ' do
-      user = User.new(name: 'tester',email: 'tester@in.com').save
+      user = User.new(name: 'tester', email: 'tester@in.com').save
       expect(user).to eq(false)
     end
 
     it 'ensure email presence ' do
-      user = User.new(name: 'tester',password: 'tester').save
+      user = User.new(name: 'tester', password: 'tester').save
       expect(user).to eq(false)
     end
-     
 
     it 'should saved successfuly' do
-      user = User.new(name: "ranjith",password: "tester",email: "tester1@in.com").save
+      user = User.new(name: 'ranjith', password: 'tester', email: 'tester1@in.com').save
       expect(user).to eq(true)
     end
-
   end
 
   context 'scope tests' do
   end
-    
 end

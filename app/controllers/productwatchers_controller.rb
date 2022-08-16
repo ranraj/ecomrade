@@ -2,7 +2,7 @@
 
 class ProductwatchersController < ApplicationController
   before_action :set_productwatcher, only: %i[show edit update destroy]
-  before_action :authenticate_user!  
+  before_action :authenticate_user!
 
   logger = Rails.logger
 
@@ -23,9 +23,9 @@ class ProductwatchersController < ApplicationController
   def edit; end
 
   # POST /productwatchers or /productwatchers.json
-  def create    
+  def create
     @productwatcher = Productwatcher.new(productwatcher_params)
-      
+
     logger.info @productwatcher
     respond_to do |format|
       if @productwatcher.save

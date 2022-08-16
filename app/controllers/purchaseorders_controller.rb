@@ -3,7 +3,7 @@
 class PurchaseordersController < ApplicationController
   before_action :set_purchaseorder, only: %i[show edit update destroy]
   before_action :authenticate_user!
-  
+
   logger = Rails.logger
 
   # GET /purchaseorders or /purchaseorders.json

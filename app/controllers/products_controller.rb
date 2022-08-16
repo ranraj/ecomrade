@@ -1,17 +1,16 @@
 # frozen_string_literal: true
 
-class ProductsController < ApplicationController  
-
+class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: %i[index show]
 
   # GET /products or /products.json
   def index
     @products = if search_string
-                  Product.search_for(search_string, page: params[:page], per_page: Product.per_page)                  
+                  Product.search_for(search_string, page: params[:page], per_page: Product.per_page)
                 else
                   Product.order(updated_at: :desc).page(params[:page])
-                end    
+                end
   end
 
   # GET /products/1 or /products/1.json
@@ -29,11 +28,10 @@ class ProductsController < ApplicationController
 
   # POST /products or /products.json
   def create
-    
     @product = Product.new(product_params)
 
     respond_to do |format|
-      if @product.save        
+      if @product.save
         format.html { redirect_to product_url(@product), notice: I18n.t('product.message.create.success') }
         format.json { render :show, status: :created, location: @product }
       else

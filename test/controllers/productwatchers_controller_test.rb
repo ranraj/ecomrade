@@ -20,7 +20,6 @@ class ProductwatchersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_user_session_url
   end
 
-
   test 'should get new' do
     get new_productwatcher_url
     assert_response :redirect
@@ -37,19 +36,20 @@ class ProductwatchersControllerTest < ActionDispatch::IntegrationTest
     user_id = users(:one).id
     product_id = products(:one).id
     assert_difference('Productwatcher.count') do
-      post productwatchers_url, params: { productwatcher: { status: @productwatcher.status, user_id: user_id, product_id: product_id } }
+      post productwatchers_url,
+           params: { productwatcher: { status: @productwatcher.status, user_id:, product_id: } }
       assert_redirected_to productwatcher_url(Productwatcher.last)
     end
   end
 
   test 'should create productwatcher redirects if not signed in' do
-      user_id = users(:one).id
-      product_id = products(:one).id
-      post productwatchers_url, params: { productwatcher: { status: @productwatcher.status, user_id: user_id, product_id: product_id } }
-      assert_redirected_to new_user_session_url
+    user_id = users(:one).id
+    product_id = products(:one).id
+    post productwatchers_url,
+         params: { productwatcher: { status: @productwatcher.status, user_id:, product_id: } }
+    assert_redirected_to new_user_session_url
   end
 
-  
   test 'should show productwatcher' do
     sign_in users(:one)
     get productwatcher_url(@productwatcher)
@@ -72,17 +72,17 @@ class ProductwatchersControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
-  
   test 'should update productwatcher redirects if not signed in' do
     patch productwatcher_url(@productwatcher), params: { productwatcher: { status: @productwatcher.status } }
     assert_redirected_to new_user_session_url
   end
-  
+
   test 'should update productwatcher' do
     sign_in users(:one)
     user_id = users(:one).id
     product_id = products(:one).id
-    patch productwatcher_url(@productwatcher), params: { productwatcher: { status: @productwatcher.status, user_id: user_id, product_id: product_id} }
+    patch productwatcher_url(@productwatcher),
+          params: { productwatcher: { status: @productwatcher.status, user_id:, product_id: } }
     assert_redirected_to productwatcher_url(@productwatcher)
   end
 
@@ -95,8 +95,7 @@ class ProductwatchersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should destroy productwatcher redirects if not signed in' do
-    
-    delete productwatcher_url(@productwatcher)    
+    delete productwatcher_url(@productwatcher)
     assert_redirected_to new_user_session_url
   end
 end

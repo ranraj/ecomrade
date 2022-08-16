@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
   resources :companies
-  resources :products 
+  resources :products
   devise_for :users
   devise_scope :user do
     get 'users/sign_out' => 'devise/sessions#destroy'

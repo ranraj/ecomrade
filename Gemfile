@@ -75,7 +75,15 @@ gem 'elasticsearch', '< 7.14'
 gem 'rack'
 gem 'searchkick'
 
- 
+# rubocop
+gem 'rubocop', require: false
+
+gem 'rubocop-rails', require: false
+
+gem 'rubocop-rspec', require: false
+
+gem 'rubocop-performance', require: false
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -104,11 +112,10 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 
+  gem 'factory_bot'
+  gem 'factory_bot_rails'
   gem 'rspec', '~> 3.5'
   gem 'rspec-rails', '~> 4.1.0'
-  gem 'factory_bot_rails'
-  gem 'simplecov', require: false
-  gem 'factory_bot'
   gem 'shoulda-matchers', '~> 5.0'
-
+  gem 'simplecov', require: false
 end
