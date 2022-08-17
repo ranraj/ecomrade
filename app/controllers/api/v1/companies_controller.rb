@@ -4,7 +4,7 @@ module Api
   module V1
     class CompaniesController < ApiController
       def index
-        @companies = Company.all
+        @companies = current_user.company.page(params[:page])
       end
     end
   end

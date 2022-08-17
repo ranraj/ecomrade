@@ -10,10 +10,7 @@ class ProductsController < ApplicationController
                   Product.search_for(search_string, page: params[:page], per_page: 25)
                 else
                   Product.order(updated_at: :desc).page(params[:page])
-                end
-    puts "s"
-    puts @products
-    puts "s"
+                end    
   end
 
   # GET /products/1 or /products/1.json
@@ -50,7 +47,7 @@ class ProductsController < ApplicationController
       if @product.update(product_params)
         format.html { redirect_to product_url(@product), notice: I18n.t('product.message.update.success') }
         format.json { render :show, status: :ok, location: @product }
-        # @product.delay.notify
+        @product.delay.notify
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @product.errors, status: :unprocessable_entity }
