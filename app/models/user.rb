@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :company
   has_many :productwatcher
   has_one :cart
+  has_many :purchaseorder
 
   validates :email, presence: true
   validates :password, presence: true

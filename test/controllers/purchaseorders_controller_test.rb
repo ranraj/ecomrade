@@ -6,6 +6,7 @@ class PurchaseordersControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
+    @user = users(:one)
     @purchaseorder = purchaseorders(:one)
   end
 
@@ -34,14 +35,14 @@ class PurchaseordersControllerTest < ActionDispatch::IntegrationTest
   test 'should create purchaseorder' do
     sign_in users(:one)
     assert_difference('Purchaseorder.count') do
-      post purchaseorders_url, params: { purchaseorder: { status: @purchaseorder.status } }
+      post purchaseorders_url, params: { purchaseorder: { status: @purchaseorder.status, user_id: @user.id } }
     end
 
     assert_redirected_to purchaseorder_url(Purchaseorder.last)
   end
 
   test 'should create purchaseorder, redirects if not signed in' do
-    post purchaseorders_url, params: { purchaseorder: { status: @purchaseorder.status } }
+    post purchaseorders_url, params: { purchaseorder: { status: @purchaseorder.status, user_id: @user.id } }
     assert_redirected_to new_user_session_url
   end
 
@@ -69,12 +70,14 @@ class PurchaseordersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update purchaseorder' do
     sign_in users(:one)
-    patch purchaseorder_url(@purchaseorder), params: { purchaseorder: { status: @purchaseorder.status } }
+    patch purchaseorder_url(@purchaseorder),
+          params: { purchaseorder: { status: @purchaseorder.status, user_id: @user.id } }
     assert_redirected_to purchaseorder_url(@purchaseorder)
   end
 
   test 'should update purchaseorder redirects, if not signed in' do
-    patch purchaseorder_url(@purchaseorder), params: { purchaseorder: { status: @purchaseorder.status } }
+    patch purchaseorder_url(@purchaseorder),
+          params: { purchaseorder: { status: @purchaseorder.status, user_id: @user.id } }
     assert_redirected_to new_user_session_url
   end
 

@@ -8,7 +8,7 @@ class PurchaseordersController < ApplicationController
 
   # GET /purchaseorders or /purchaseorders.json
   def index
-    @purchaseorders = Purchaseorder.page(params[:page])
+    @purchaseorders = current_user.purchaseorder.page(params[:page])
   end
 
   # GET /purchaseorders/1 or /purchaseorders/1.json
@@ -81,11 +81,11 @@ class PurchaseordersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_purchaseorder
-    @purchaseorder = Purchaseorder.find(params[:id])
+    @purchaseorder = Purchaseorder.find_by_id(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def purchaseorder_params
-    params.require(:purchaseorder).permit(:status)
+    params.require(:purchaseorder).permit(:status, :user_id)
   end
 end
