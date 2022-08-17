@@ -15,10 +15,10 @@
     <%= form.text_field t("productwatcher.field.status") , type: :hidden%>
   </div>
   <div>
-    <%= form.number_field t("productwatcher.field.user"), id: :productwatcher_user_id, value: current_user.id %>
+    <%= form.number_field :user_id, id: :productwatcher_user_id, value: current_user.id, type: :hidden %>
   </div>
   <div>    
-    <%= form.number_field t("productwatcher.field.product"), id: :productwatcher_product_id, value: locals[:product_id]%>
+    <%= form.number_field :product_id, id: :productwatcher_product_id, value: locals[:product_id], type: :hidden%>
   </div> 
 
   <div>
@@ -26,4 +26,4 @@
   </div>
 <% end %>
 
-<%= button_to t("productwatcher.action.remove_watcher"), @productwatcher, method: :delete , class: 'btn btn-danger'%>
+<%#= button_to t("productwatcher.action.remove_watcher"), @productwatcher, method: :delete , class: 'btn btn-danger'%>

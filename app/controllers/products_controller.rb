@@ -7,10 +7,13 @@ class ProductsController < ApplicationController
   # GET /products or /products.json
   def index
     @products = if search_string
-                  Product.search_for(search_string, page: params[:page], per_page: Product.per_page)
+                  Product.search_for(search_string, page: params[:page], per_page: 25)
                 else
                   Product.order(updated_at: :desc).page(params[:page])
                 end
+    puts "s"
+    puts @products
+    puts "s"
   end
 
   # GET /products/1 or /products/1.json

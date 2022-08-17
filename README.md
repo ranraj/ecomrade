@@ -94,7 +94,10 @@ elastic search
 ```
 docker-compose -f elastic_kibana_compose.yml up
 ```
-
+Run the below rake command to reindex
+```
+rake searchkick:reindex:all
+```
 Build :
 ```
 - bundle install
