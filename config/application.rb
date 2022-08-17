@@ -27,5 +27,8 @@ module Ecom
     # Caching mailer
     config.action_mailer.perform_caching = true
     config.mail = config_for(:mail)
+
+    # Custom exception handling
+    config.exceptions_app = self.routes
   end
 end
