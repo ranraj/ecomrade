@@ -23,6 +23,7 @@ script:
   - docker-compose -f docker-compose.yml -f docker-compose-webapp.yml exec app rails test
   - docker-compose -f docker-compose.yml -f docker-compose-webapp.yml exec app rspec spec
   - docker-compose -f docker-compose.yml -f docker-compose-webapp.yml exec app bundle exec rubocop
+  - docker-compose -f docker-compose.yml -f docker-compose-webapp.yml exec app rake brakeman:run
 
 after_script:
   - docker-compose -f docker-compose.yml -f docker-compose-webapp.yml down
