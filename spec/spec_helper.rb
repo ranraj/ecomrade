@@ -97,6 +97,5 @@ RSpec.configure do |config|
   #   Kernel.srand config.seed
   # Coverage
   SimpleCov.start 'rails'
-  
   config.include Devise::Test::ControllerHelpers, type: :controller
 end

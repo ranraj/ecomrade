@@ -4,8 +4,6 @@ class PurchaseordersController < ApplicationController
   before_action :set_purchaseorder, only: %i[show edit update destroy]
   before_action :authenticate_user!
 
-  logger = Rails.logger
-
   # GET /purchaseorders or /purchaseorders.json
   def index
     @purchaseorders = current_user.purchaseorder.page(params[:page])
@@ -37,7 +35,7 @@ class PurchaseordersController < ApplicationController
             redirect_to purchaseorder_url(@purchaseorder), notice: I18n.t('purchaseorder.message.create.success')
           end
           format.json { render :show, status: :created, location: @purchaseorder }
-        rescue Exception => e
+        rescue StandardError => e
           logger.error e.message
           logger.error e.backtrace.join("\n")
           format.html do

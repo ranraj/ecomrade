@@ -2,6 +2,7 @@
 
 require 'active_support/core_ext/integer/time'
 
+# rubocop:disable  Metrics/BlockLength
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -63,7 +64,7 @@ Rails.application.configure do
   config.assets.quiet = true
 
   # Raises error for missing translations.
-  # config.i18n.raise_on_missing_translations = true
+  config.i18n.raise_on_missing_translations = true
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
@@ -105,7 +106,7 @@ Rails.application.configure do
 
   # config.action_mailer.delivery_method = :test
   host = 'localhost:3000'
-  config.action_mailer.default_url_options = { host: 'localhost:3000', protocol: 'http' }
+  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
 
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
@@ -117,3 +118,4 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 end
+# rubocop:enable  Metrics/BlockLength

@@ -8,6 +8,8 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 module Ecom
+  # Ecom Application is an E commerce application to manage product
+  # buyer, seller and order
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0

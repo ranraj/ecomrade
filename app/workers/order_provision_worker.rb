@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
+# Sidekiq worker to provision once order commited
 class OrderProvisionWorker
   include Sidekiq::Worker
   sidekiq_options retry: false
-  logger = Rails.logger
 
   def perform(*args)
-    logger.info "Order provision worker started. #{args[0]}"
+    Rails.logger.info "Order provision worker started. #{args[0]}"
   end
 end

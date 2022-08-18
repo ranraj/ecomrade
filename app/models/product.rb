@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Product is core model of E Commerce system
+# Code is Alpha numeric and unique. Used to identify an product
 class Product < ApplicationRecord
   include ProductSearch
 
@@ -19,8 +21,9 @@ class Product < ApplicationRecord
   end
 
   def reindex_model
-    if (previous_changes.keys & search_data.stringify_keys.keys).present?
-      ElasticWorker.perform_async(id, self.class.name)
-    end
+    return unless (previous_changes.keys & search_data.stringify_keys.keys).present?
+
+    ElasticWorker.perform_async(id,
+                                self.class.name)
   end
 end

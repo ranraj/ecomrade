@@ -32,21 +32,22 @@ class ProductwatchersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create productwatcher' do
-    sign_in users(:one)
-    user_id = users(:one).id
+    user = users(:one)
+    sign_in user
     product_id = products(:one).id
+    user_id = user.id
     assert_difference('Productwatcher.count') do
       post productwatchers_url,
-           params: { productwatcher: { status: @productwatcher.status, user_id:, product_id: } }
+           params: { productwatcher: { status: @productwatcher.status, user_id: user_id, product_id: product_id } }
       assert_redirected_to productwatcher_url(Productwatcher.last)
     end
   end
 
   test 'should create productwatcher redirects if not signed in' do
-    user_id = users(:one).id
     product_id = products(:one).id
+    user_id = users(:one)
     post productwatchers_url,
-         params: { productwatcher: { status: @productwatcher.status, user_id:, product_id: } }
+         params: { productwatcher: { status: @productwatcher.status, user_id: user_id, product_id: product_id } }
     assert_redirected_to new_user_session_url
   end
 
@@ -73,16 +74,20 @@ class ProductwatchersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update productwatcher redirects if not signed in' do
-    patch productwatcher_url(@productwatcher), params: { productwatcher: { status: @productwatcher.status } }
+    product_id = products(:one).id
+    user_id = users(:one).id
+    patch productwatcher_url(@productwatcher), params: { productwatcher: { status: @productwatcher.status,user_id: user_id , product_id: product_id } }
     assert_redirected_to new_user_session_url
   end
 
   test 'should update productwatcher' do
-    sign_in users(:one)
-    user_id = users(:one).id
+
+    user = users(:one)
+    sign_in user
     product_id = products(:one).id
+    user_id = user.id
     patch productwatcher_url(@productwatcher),
-          params: { productwatcher: { status: @productwatcher.status, user_id:, product_id: } }
+          params: { productwatcher: { status: @productwatcher.status, user_id: user_id , product_id: product_id } }
     assert_redirected_to productwatcher_url(@productwatcher)
   end
 

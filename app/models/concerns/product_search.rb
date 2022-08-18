@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Full text Seach the product in elastic search
 module ProductSearch
   extend ActiveSupport::Concern
 
@@ -32,36 +33,9 @@ module ProductSearch
     def search_for(search_string, options = {})
       search search_string, **{
         fields: %i[name^10 description combined],
-        match: :word_start,
-        suggest: true,
-        highlight: true,
-        misspellings: false
+        match: :word_start, suggest: true,
+        highlight: true, misspellings: false
       }.merge(options)
-    end
-
-    def search_for_autocomplete(search_string, options = {})
-      search search_string, **{
-        fields: [:combined],
-        match: :word_start,
-        limit: 10,
-        load: false,
-        highlight: true,
-        misspellings: { prefix_length: 2, below: 3 }
-      }.merge(options)
-    end
-
-    def autocomplete(search_string)
-      search_for_autocomplete(search_string).map do |record|
-        record['highlight']['combined.word_start'].map do |fragment|
-          fragment
-            .scan(%r{<em>(.*?)</em>})
-            .join(' ')
-            .downcase
-            .split
-            .uniq
-            .join(' ')
-        end
-      end.flatten.uniq
     end
   end
 end

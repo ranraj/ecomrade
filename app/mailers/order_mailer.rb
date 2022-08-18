@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
+# Order notification email
 class OrderMailer < ApplicationMailer
-  logger = Rails.logger
   def new_order_email
     @purchaseorder = params[:purchaseorder]
     @user = params[:user]
-    logger.info Rails.configuration.x.payment_processing.schedule
+    Rails.logger.info Rails.configuration.x.payment_processing.schedule
     mail(to: @user.email, subject: I18n.t('purchaseorder.lable.order_email_subject'))
   rescue StandardError => e
-    logger.error e.message
+    Rails.logger.error e.message
   end
 end

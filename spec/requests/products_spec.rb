@@ -21,9 +21,7 @@ RSpec.describe 'Products', type: :request do
     let!(:user) { create(:user) }
     let!(:product) { create(:product) }
     let(:valid_attributes) { FactoryBot.attributes_for(:product) }
-
     before do
-      create_list(:productwatcher, 2, user:, product:)
       sign_in user
     end
 

@@ -4,8 +4,6 @@ class ProductwatchersController < ApplicationController
   before_action :set_productwatcher, only: %i[show edit update destroy]
   before_action :authenticate_user!
 
-  logger = Rails.logger
-
   # GET /productwatchers or /productwatchers.json
   def index
     @productwatchers = current_user.productwatcher.page(params[:page])
