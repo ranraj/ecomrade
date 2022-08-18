@@ -38,7 +38,7 @@ class ProductwatchersControllerTest < ActionDispatch::IntegrationTest
     user_id = user.id
     assert_difference('Productwatcher.count') do
       post productwatchers_url,
-           params: { productwatcher: { status: @productwatcher.status, user_id: user_id, product_id: product_id } }
+           params: { productwatcher: { status: @productwatcher.status, user_id:, product_id: } }
       assert_redirected_to productwatcher_url(Productwatcher.last)
     end
   end
@@ -47,7 +47,7 @@ class ProductwatchersControllerTest < ActionDispatch::IntegrationTest
     product_id = products(:one).id
     user_id = users(:one)
     post productwatchers_url,
-         params: { productwatcher: { status: @productwatcher.status, user_id: user_id, product_id: product_id } }
+         params: { productwatcher: { status: @productwatcher.status, user_id:, product_id: } }
     assert_redirected_to new_user_session_url
   end
 
@@ -76,18 +76,18 @@ class ProductwatchersControllerTest < ActionDispatch::IntegrationTest
   test 'should update productwatcher redirects if not signed in' do
     product_id = products(:one).id
     user_id = users(:one).id
-    patch productwatcher_url(@productwatcher), params: { productwatcher: { status: @productwatcher.status,user_id: user_id , product_id: product_id } }
+    patch productwatcher_url(@productwatcher),
+          params: { productwatcher: { status: @productwatcher.status, user_id:, product_id: } }
     assert_redirected_to new_user_session_url
   end
 
   test 'should update productwatcher' do
-
     user = users(:one)
     sign_in user
     product_id = products(:one).id
     user_id = user.id
     patch productwatcher_url(@productwatcher),
-          params: { productwatcher: { status: @productwatcher.status, user_id: user_id , product_id: product_id } }
+          params: { productwatcher: { status: @productwatcher.status, user_id:, product_id: } }
     assert_redirected_to productwatcher_url(@productwatcher)
   end
 
