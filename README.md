@@ -61,14 +61,6 @@ docker-compose -f docker/docker_compose.develop.yml down --volumes
 ```
 
 # Dependency systems
-
-SideKiq - makesure redis is running
-```
-docker run --name rdb -p 6379:6379 redis
-```
-Rerun stoped container
-```
-docker start  rdb
 ```
 Redis browser
 ```
@@ -90,31 +82,30 @@ Start Delayed job :
 ./bin/delayed_job stop
 ```
 
-elastic search
-```
-docker-compose -f elastic_kibana_compose.yml up
-```
 Run the below rake command to reindex
 ```
 rake searchkick:reindex:all
 ```
-Build :
-```
-- bundle install
-- rails s
-```
 
-Dev :
+Access application :
 
 ```
 http://localhost:3000
 ```
-
-Docker process
+Sidekiq
 ```
+http://localhost:3000/sidekiq
+```
+
+Access docker container:
+
+
+```
+#Docker process
 docker ps 
 ```
-Docker logs follow
+
 ```
+#Docker logs follow
 docker logs <DOCKER_CONTAINER_ID> --follow
 ```
