@@ -5,12 +5,13 @@
 class Product < ApplicationRecord
   include ProductSearch
 
-  after_commit :reindex_model
-
-  has_many :productwatcher
   paginates_per 9
   max_paginates_per 100
-
+  
+  after_commit :reindex_model
+  has_many :productwatcher
+  belongs_to :category
+  
   def notify
     log "#{productwatcher_ids} notification triggered"
   end
@@ -25,5 +26,11 @@ class Product < ApplicationRecord
 
     ElasticWorker.perform_async(id,
                                 self.class.name)
+  end
+
+  def category_name 
+    Rails.cache.fetch([:category, category_id, :name], expires_in: 5.minutes) do
+        category.name
+    end
   end
 end

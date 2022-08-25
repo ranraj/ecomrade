@@ -40,28 +40,43 @@ Below docker compose would startup the dependency systems.
 - Kibana
 - Redis
 - Elastic search
-Note : Please ensure that you have set the password (POSTGRES_PASSWORD) in the docker/pg_compose.yml
+Note : 
+- Please ensure that you have set the password (POSTGRES_PASSWORD) in the docker/pg_compose.yml
+- Run the docker compose with webapp for the very first time to ignite the database setup. You can manually stop the ecom app container and run your local rails app server.
 
 Start the Ecom application with dependency system
 ```
-docker compose -f docker_compose.yml -f docker_compose.webapp.yml up
+docker compose -f docker_compose.yml -f docker_compose.webapp.yml up -d
 ```
 Boot only dependency systems through docker compose. This could be useful for development purpose. Start the puma server on you local system and connect dependency from docker.
 ```
 docker-compose -f docker/docker_compose.yml up
+```
+Set environment variable to use host rails server to point the docker instance for dependency system
+```
+export ELASTICSEARCH_URL="http://localhost:9200"
+export REDIS_SIDEKIQ_URL="redis://localhost:6379/0"
+export ECOM_DATABASE_HOST="localhost"
+export ECOM_DATABASE_PORT="5432"
+export ECOM_DATABASE_USERNAME="ecomadmin"
+export ECOM_DATABASE_PASSWORD="ecomdev@123
 ```
 Start your rails server from the terminal. Use the docker postgres db password (password) in config/database.yml
 ```
 rails s
 ```
 
-Stop and clean
+Stop running containers through compose file
 ```
-docker-compose -f docker/docker_compose.develop.yml down --volumes
+docker compose -f docker-compose.yml down
+```
+Remove the docker compose volume
+```
+docker compose -f docker-compose.yml down --volumes
 ```
 
 # Dependency systems
-```
+
 Redis browser
 ```
 npm install redis-commander

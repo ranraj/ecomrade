@@ -44,4 +44,4 @@ services:
       - postgres
       - sidekiq
     networks:
-      - docker_elk
+      - ecomrade_docker_nw

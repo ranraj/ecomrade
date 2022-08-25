@@ -16,6 +16,9 @@
             <p class="card-text">
                 <%= product.description %>
             </p>
+            <p class="card-text">
+                <%= t("product.lable.category") %> : <%= product.category_name %>
+            </p>
             <h6 class="card-subtitle text-muted mb-2"><%= t("product.lable.price")%> : <%= product.price %></h6>
             <a href="#" class="btn btn-success">
                 Add to cart

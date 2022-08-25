@@ -7,5 +7,6 @@ FactoryBot.define do
     code { Faker::Code.asin }
     price { Faker::Config.random }
     image_link { Faker::File.file_name(dir: 'images/') }
+    category_id {create(:category).id}
   end
 end

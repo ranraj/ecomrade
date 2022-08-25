@@ -30,6 +30,14 @@
       <%= form.label t("product.lable.image_link"),  class:"form-label", for:"formImage" %>
       <%= form.text_field :image_link, placeholder: t("product.placeholder.image_link"), id:"formImage", class:"form-control" %>
     </div>
+    <div class="form-group "> 
+      <%= form.label t("product.lable.category"),  class:"form-label", for:"formCategory" %>
+      <% if @product.category == nil %>        
+        <%= form.number_field :category_id, id: :category_product_id, value: 0 , id:"formCategory", class:"form-control"%>
+      <% else %>
+        <%= form.number_field :category_id, id: :category_product_id, value: @product.category.id , id:"formCategory", class:"form-control"%>
+      <% end %>
+    </div>
     <div class="form-group">
       <%= form.submit t("product.action.save"),  class: 'btn btn-primary'%>
     </div>

@@ -10,7 +10,7 @@ services:
     volumes:
       - skiq-data:/sidekiq
     networks:
-      - docker_elk
+      - ecomrade_docker_nw
 
   postgres:
     volumes:
@@ -39,5 +39,5 @@ volumes:
 
 
 networks:
-  docker_elk:
+  ecomrade_docker_nw:
     driver: bridge

@@ -116,6 +116,9 @@ Rails.application.configure do
     password: Rails.application.config.mail.password,
     authentication: 'plain',
     enable_starttls_auto: true
-  }
+  }  
+
+  config.action_controller.perform_caching = true
+  config.action_controller.page_cache_directory = Rails.root.join("public", "cached_pages")
 end
 # rubocop:enable  Metrics/BlockLength

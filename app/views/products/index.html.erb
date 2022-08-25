@@ -11,21 +11,25 @@
               <div class="container-fluid p-0 m-0 align-items-center justify-content-center d-flex"
                style="min-height: 85vh;">
                   <!-- Row for the card-->
-                  <div class="row w-100 p-0 w-0">                   
-                      <% @products.each do |product| %>
-                        <%= render "product_tile", product: product %>                                          
-                      <%end%>
+                  <div class="row w-100 p-0 w-0">      
+                     <% cache_if user_signed_in? && search_string == nil do%>             
+                        <% @products.each do |product| %>
+                        <% cache product, expires_in: 5.minutes do%>
+                           <%= render "product_tile", product: product ,cached: true %>                                          
+                        <% end %>
+                        <%end%>
+                     <% end %> 
                   </div>
               </div>
               <%= paginate @products%>
             <%elsif search_string == nil%>
-            <div class="m-3">   
-               <%= t("application.common.lable.no_records_found")%>
-            </div>   
-            <%else %>                    
-            <div class="m-3">
-               <%= t("application.common.lable.no_records_found_for",search_key: search_string)%>
-            </div>
+               <div class="m-3">   
+                  <%= t("application.common.lable.no_records_found")%>
+               </div>   
+               <%else %>                    
+               <div class="m-3">
+                  <%= t("application.common.lable.no_records_found_for",search_key: search_string)%>
+               </div>
             <%end%>
          </div>
       </div>

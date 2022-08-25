@@ -86,6 +86,7 @@ en:
       code: "Code"
       price: "Price"
       image_link: "Image link"
+      category: "Category"
     placeholder:
       name: "Apple"
       description: "Apple fruit 1 kg"
