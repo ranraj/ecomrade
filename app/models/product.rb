@@ -7,11 +7,11 @@ class Product < ApplicationRecord
 
   paginates_per 9
   max_paginates_per 100
-  
+
   after_commit :reindex_model
   has_many :productwatcher
   belongs_to :category
-  
+
   def notify
     log "#{productwatcher_ids} notification triggered"
   end
@@ -28,9 +28,9 @@ class Product < ApplicationRecord
                                 self.class.name)
   end
 
-  def category_name 
-    Rails.cache.fetch([:category, category_id, :name], expires_in: 5.minutes) do
-        category.name
+  def category_fetch
+    Rails.cache.fetch([self, 'cached_category'], expires_in: 5.minutes) do
+      category
     end
   end
 end

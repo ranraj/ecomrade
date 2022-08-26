@@ -6,6 +6,7 @@ one:
   code: APL
   price: 200
   image_link: ""
+  category: category_two
 
 two:
   name: Orange
@@ -13,3 +14,4 @@ two:
   code: ORG
   price: 150
   image_link: ""
+  category: category_two

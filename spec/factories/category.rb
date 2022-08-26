@@ -4,6 +4,6 @@ FactoryBot.define do
   factory :category do
     name { Faker::Food.vegetables }
     description { Faker::Food.description }
-    parent {  }     
+    parent {}
   end
 end

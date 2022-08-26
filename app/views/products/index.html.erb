@@ -12,7 +12,7 @@
                style="min-height: 85vh;">
                   <!-- Row for the card-->
                   <div class="row w-100 p-0 w-0">      
-                     <% cache_if user_signed_in? && search_string == nil do%>             
+                     <% cache_if !user_signed_in? && search_string == nil do%>             
                         <% @products.each do |product| %>
                         <% cache product, expires_in: 5.minutes do%>
                            <%= render "product_tile", product: product ,cached: true %>                                          
