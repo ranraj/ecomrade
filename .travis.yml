@@ -26,4 +26,4 @@ script:
   - docker-compose -f docker-compose.yml -f docker-compose-webapp.yml exec app rake brakeman:run
 
 after_script:
-  - docker-compose -f docker-compose.yml -f docker-compose-webapp.yml down
+  - docker-compose -f docker-compose.yml -f docker-compose-webapp.yml down --volumes

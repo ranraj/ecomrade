@@ -43,6 +43,10 @@ Below docker compose would startup the dependency systems.
 Note : 
 - Please ensure that you have set the password (POSTGRES_PASSWORD) in the docker/pg_compose.yml
 - Run the docker compose with webapp for the very first time to ignite the database setup. You can manually stop the ecom app container and run your local rails app server.
+- If there is code change in the rails app, then please rebuild the rails app docker image
+```
+docker rmi ecomrade_app -f
+```
 
 Start the Ecom application with dependency system
 ```
