@@ -50,7 +50,10 @@ docker rmi ecomrade_app -f
 
 Start the Ecom application with dependency system
 ```
-docker compose -f docker-compose.yml -f docker-compose.webapp.yml up -d
+#Mac
+docker compose -f docker-compose.yml -f docker-compose-webapp.yml up -d
+#Ubuntu
+sudo docker-compose -f docker-compose.yml -f docker-compose-webapp.yml up -d
 ```
 Boot only dependency systems through docker compose. This could be useful for development purpose. Start the puma server on you local system and connect dependency from docker.
 ```
