@@ -50,11 +50,11 @@ docker rmi ecomrade_app -f
 
 Start the Ecom application with dependency system
 ```
-docker compose -f docker_compose.yml -f docker_compose.webapp.yml up -d
+docker compose -f docker-compose.yml -f docker-compose.webapp.yml up -d
 ```
 Boot only dependency systems through docker compose. This could be useful for development purpose. Start the puma server on you local system and connect dependency from docker.
 ```
-docker-compose -f docker/docker_compose.yml up
+docker-compose -f docker/docke-compose.yml up
 ```
 Set environment variable to use host rails server to point the docker instance for dependency system
 ```
